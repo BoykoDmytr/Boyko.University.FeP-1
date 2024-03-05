@@ -6,7 +6,7 @@ dimabojko501@gmail.com
 https://t.me/DEMONWASD
 
 ## Getting Started
-- Implement feature: Graph Plotter ✔
+- Implement feature: Graph Plotter 
 ## Project Documentation
  Styles
 Defines styles for various elements on the page, including text field dimensions and graphical output.
@@ -36,7 +36,7 @@ These functions perform specific tasks:
   
 
 ## Project Task Decomposition
-- Develop user interface components for graph plotting ✔
+- Develop user interface components for graph plotting 
 ## Week 1
 - Implement feature: Graph Plotter ✔
   - Develop user interface components for graph plotting ✔
