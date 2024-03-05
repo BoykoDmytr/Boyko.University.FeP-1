@@ -6,7 +6,7 @@ dimabojko501@gmail.com
 https://t.me/DEMONWASD
 
 ## Getting Started
-- Implement feature: Graph Plotter 
+Press the project start button labeled "http" or in the "PowerShell for Developers" console, execute the command "dotnet run".
 ## Project Documentation
  Styles
 Defines styles for various elements on the page, including text field dimensions and graphical output.
