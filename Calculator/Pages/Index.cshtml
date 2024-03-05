@@ -1,10 +1,102 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Graph Plotting";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h2>@ViewData["Title"]</h2>
+
+<style>
+    #mathExpression {
+        width: 400px;
+        height: 30px; 
+    }
+
+    #mathKeyboard button {
+        width: 60px; 
+        height: 30px; 
+        margin: 5px; 
+    }
+
+    #plot {
+        width: 900px; 
+        height: 700px;
+    }
+</style>
+
+
+<div>
+    <label for="mathExpression">Enter Math Expression:</label>
+    <input type="text" id="mathExpression" />
+    <button onclick="plotGraph()">Plot Graph</button>
 </div>
+
+<div id="plot"></div>
+
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/mathjs-expression-parser@2.0.3/dist/mathjs-expression-parser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.6.0/math.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        function addToExpression(value) {
+            var expressionField = document.getElementById('mathExpression');
+            expressionField.value += value;
+        }
+
+        function clearExpression() {
+            var expressionField = document.getElementById('mathExpression');
+            expressionField.value = '';
+        }
+    </script>
+    <script>
+        function plotGraph() {
+            var expression = document.getElementById('mathExpression').value;
+
+            if (expression.trim() === "") {
+                alert("Please enter a valid math expression.");
+                return;
+            }
+
+            var parser = math.parser();
+            parser.set('x', 0); 
+
+            var xValues = [];
+            var yValues = [];
+
+            for (var i = -20; i <= 20; i += 0.1) {
+                xValues.push(i);
+            }
+
+            for (var i = 0; i < xValues.length; i++) {
+                if (xValues[i] !== 0) {
+                    parser.set('x', xValues[i]);
+                    try {
+                        var result = parser.evaluate(expression);
+                        yValues.push(result);
+                    } catch (error) {
+                        alert("Error evaluating the expression.");
+                        return;
+                    }
+                }
+            }
+
+            var trace = {
+                x: xValues,
+                y: yValues,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Graph'
+            };
+
+            var layout = {
+                title: 'Math Expression Plot',
+                xaxis: { title: 'X-axis', range: [-40, 40] },
+                yaxis: { title: 'Y-axis', range: [-55, 55] }
+            };
+
+            Plotly.newPlot('plot', [trace], layout);
+        }
+    </script>
+
+}

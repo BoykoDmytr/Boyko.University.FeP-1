@@ -1,20 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
 
 namespace Calculator.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
+        public List<double> XValues { get; set; } = new List<double>();
+        public List<double> YValues { get; set; } = new List<double>();
 
         public void OnGet()
         {
-
+            XValues.AddRange(new double[] { 0, 0 });
+            YValues.AddRange(new double[] { 0, 0 });
         }
+
     }
 }
