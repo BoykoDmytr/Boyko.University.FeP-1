@@ -1,7 +1,10 @@
 ## Author
 Dmytro Boyko FeP-21
+
 dimabojko501@gmail.com
+
 https://t.me/DEMONWASD
+
 ## Getting Started
 -
 ## Project Documentation
