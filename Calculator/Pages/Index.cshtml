@@ -27,9 +27,10 @@
 
 <div>
     <label for="mathExpression">Enter Math Expression:</label>
-    <input type="text" id="mathExpression" />
+    <input type="text" id="mathExpression" value="y^(4)-x^(4)=xy" />
     <button onclick="plotGraph()">Plot Graph</button>
 </div>
+
 
 <div id="plot"></div>
 
@@ -58,44 +59,65 @@
                 return;
             }
 
-            var parser = math.parser();
-            parser.set('x', 0); 
+            try {
+                var parsedExpression = math.parse(expression);
+            } catch (error) {
+                alert("Error parsing the expression.");
+                return;
+            }
+
+            var hasX = parsedExpression.filter(node => node.name === 'x').length > 0;
+            var hasY = parsedExpression.filter(node => node.name === 'y').length > 0;
 
             var xValues = [];
-            var yValues = [];
+            var yValuesX = [];
+            var yValuesY = [];
 
             for (var i = -20; i <= 20; i += 0.1) {
                 xValues.push(i);
             }
 
             for (var i = 0; i < xValues.length; i++) {
-                if (xValues[i] !== 0) {
-                    parser.set('x', xValues[i]);
-                    try {
-                        var result = parser.evaluate(expression);
-                        yValues.push(result);
-                    } catch (error) {
-                        alert("Error evaluating the expression.");
-                        return;
-                    }
+                try {
+                    var resultX = hasX ? parsedExpression.evaluate({ x: xValues[i] }) : 0;
+                    var resultY = hasY ? parsedExpression.evaluate({ y: xValues[i] }) : 0;
+                    yValuesX.push(resultX);
+                    yValuesY.push(resultY);
+                } catch (error) {
+                    alert("Error evaluating the expression.");
+                    return;
                 }
             }
 
-            var trace = {
-                x: xValues,
-                y: yValues,
-                type: 'scatter',
-                mode: 'lines',
-                name: 'Graph'
-            };
+            var traces = [];
+
+            if (hasX) {
+                traces.push({
+                    x: xValues,
+                    y: yValuesX,
+                    type: 'scatter',
+                    mode: 'lines',
+                    name: 'Graph X'
+                });
+            }
+
+            if (hasY) {
+                traces.push({
+                    x: yValuesY,
+                    y: xValues,
+                    type: 'scatter',
+                    mode: 'lines',
+                    name: 'Graph Y'
+                });
+            }
 
             var layout = {
                 title: 'Math Expression Plot',
                 xaxis: { title: 'X-axis', range: [-40, 40] },
-                yaxis: { title: 'Y-axis', range: [-55, 55] }
+                yaxis: { title: 'Y-axis', range: [-40, 40] }
             };
 
-            Plotly.newPlot('plot', [trace], layout);
+            Plotly.newPlot('plot', traces, layout);
         }
     </script>
 
