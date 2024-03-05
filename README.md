@@ -8,13 +8,13 @@ https://t.me/DEMONWASD
 ## Getting Started
 - Implement feature: Graph Plotter ✔
 ## Project Documentation
-# Styles
+ Styles
 Defines styles for various elements on the page, including text field dimensions and graphical output.
 
-# HTML Expression Input Form
+ HTML Expression Input Form
 Contains a form with an input field for mathematical expressions, a button for graph plotting, and a designated block for displaying the graph.
 
-# Scripts Section
+ Scripts Section
 - Includes three scripts added to the page:
   1. Expression Parsing Script
     - Loads a library for parsing mathematical expressions.
@@ -24,14 +24,14 @@ Contains a form with an input field for mathematical expressions, a button for g
     - Loads the Plotly library for graph plotting.
 
 
-# JavaScript Functions
+ JavaScript Functions
 These functions perform specific tasks:
 
 - addToExpression(value)
   - Adds a value to the expression in the input field.
 - clearExpression()
   - Clears the input field for expressions.
--plotGraph()
+- plotGraph()
   - Plots the graph of the mathematical expression using the Plotly library and performs computations with the math.js library.
   
 
