@@ -35,6 +35,8 @@ These functions perform specific tasks:
   - Clears the input field for expressions.
 - plotGraph()
   - Plots the graph of the mathematical expression using the Plotly library and performs computations with the math.js library.
+
+
   
 ### Week 2
  - Calculator
