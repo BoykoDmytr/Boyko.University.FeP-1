@@ -1,0 +1,39 @@
+﻿@page
+@model Calculator.VIews.Calculator.IndexModel
+@{
+    ViewData["Title"] = "Calculator";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <label for="num1">Enter Number 1:</label>
+    <input type="text" id="num1" />
+</div>
+
+<div>
+    <label for="num2">Enter Number 2:</label>
+    <input type="text" id="num2" />
+</div>
+
+<button onclick="calculate()">Calculate</button>
+
+<div id="result"></div>
+
+@section Scripts {
+    <script>
+        function calculate() {
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Please enter valid numbers.");
+                return;
+            }
+
+            var result = num1 + num2; 
+
+            document.getElementById('result').innerHTML = "Result: " + result;
+        }
+    </script>
+}

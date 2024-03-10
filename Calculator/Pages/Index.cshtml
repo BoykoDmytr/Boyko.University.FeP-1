@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Graph Plotting";
+    ViewData["Title"] = "Welcome to Calculator and Graph Plotter";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -9,37 +9,145 @@
 <style>
     #mathExpression {
         width: 400px;
-        height: 30px; 
+        height: 30px;
     }
 
     #mathKeyboard button {
-        width: 60px; 
-        height: 30px; 
-        margin: 5px; 
+        width: 60px;
+        height: 30px;
+        margin: 5px;
     }
 
     #plot {
-        width: 900px; 
+        width: 900px;
         height: 700px;
     }
 </style>
 
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
 
-<div>
-    <label for="mathExpression">Enter Math Expression:</label>
-    <input type="text" id="mathExpression"/>
-    <button onclick="plotGraph()">Plot Graph</button>
+    h2 {
+        color: #333;
+    }
+
+    #header {
+        background-color: #4CAF50;
+        padding: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+        #header h3 {
+            color: white;
+        }
+
+    button {
+        padding: 10px;
+        font-size: 14px;
+        margin: 5px;
+    }
+
+    #content {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    #graph,
+    #calculator {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        background-color: #f9f9f9;
+        display: none;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input {
+        padding: 5px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    select {
+        padding: 5px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #calculatorResult {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+</style>
+
+<div id="header">
+    <h3>Select an Option:</h3>
+    <button onclick="toggleTab('graph')">Graph Plotter</button>
+    <button onclick="toggleTab('calculator')">Calculator</button>
 </div>
 
+<div id="content">
+    <div id="graph" style="display: none;">
+        <label for="mathExpression">Enter Math Expression:</label>
+        <input type="text" id="mathExpression" />
+        <button onclick="plotGraph()">Plot Graph</button>
+        <div id="plot"></div>
+    </div>
 
-<div id="plot"></div>
+    <div id="calculator" style="display: none;">
+        <label for="num1">Enter Number 1:</label>
+        <input type="text" id="num1" />
+        <label for="num2">Enter Number 2:</label>
+        <input type="text" id="num2" />
 
+        <label for="operation">Select Operation:</label>
+        <select id="operation">
+            <option value="add">Addition (+)</option>
+            <option value="subtract">Subtraction (-)</option>
+            <option value="multiply">Multiplication (*)</option>
+            <option value="divide">Division (/)</option>
+            <option value="power">Power (^)</option>
+            <option value="root">Root (√)</option>
+            <option value="percentage">Percentage (%)</option>
+        </select>
+
+        <button onclick="calculate()">Calculate</button>
+        <div id="calculatorResult"></div>
+    </div>
+</div>
 
 @section Scripts {
     <script src="https://cdn.jsdelivr.net/npm/mathjs-expression-parser@2.0.3/dist/mathjs-expression-parser.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.6.0/math.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script>
+        function toggleTab(tabName) {
+            var graphTab = document.getElementById('graph');
+            var calculatorTab = document.getElementById('calculator');
+            var plotDiv = document.getElementById('plot');
+            var calculatorResultDiv = document.getElementById('calculatorResult');
+
+            if (tabName === 'graph') {
+                graphTab.style.display = 'block';
+                calculatorTab.style.display = 'none';
+                calculatorResultDiv.style.display = 'none';
+                plotDiv.style.display = 'block';
+            } else if (tabName === 'calculator') {
+                graphTab.style.display = 'none';
+                calculatorTab.style.display = 'block';
+                calculatorResultDiv.style.display = 'block';
+                plotDiv.style.display = 'none';
+            }
+        }
+
         function addToExpression(value) {
             var expressionField = document.getElementById('mathExpression');
             expressionField.value += value;
@@ -49,8 +157,7 @@
             var expressionField = document.getElementById('mathExpression');
             expressionField.value = '';
         }
-    </script>
-    <script>
+
         function plotGraph() {
             var expression = document.getElementById('mathExpression').value;
 
@@ -119,6 +226,51 @@
 
             Plotly.newPlot('plot', traces, layout);
         }
-    </script>
 
+        function calculate() {
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+            var operation = document.getElementById('operation').value;
+
+            if (isNaN(num1)) {
+                alert("Please enter a valid number for Number 1.");
+                return;
+            }
+
+            var result;
+
+            switch (operation) {
+                case 'add':
+                    result = num1 + num2;
+                    break;
+                case 'subtract':
+                    result = num1 - num2;
+                    break;
+                case 'multiply':
+                    result = num1 * num2;
+                    break;
+                case 'divide':
+                    if (num2 === 0) {
+                        alert("Cannot divide by zero.");
+                        return;
+                    }
+                    result = num1 / num2;
+                    break;
+                case 'power':
+                    result = Math.pow(num1, num2);
+                    break;
+                case 'root':
+                    result = Math.sqrt(num1);
+                    break;
+                case 'percentage':
+                    result = (num1 * num2) / 100;
+                    break;
+                default:
+                    alert("Invalid operation selected.");
+                    return;
+            }
+
+            document.getElementById('calculatorResult').innerHTML = "Result: " + result;
+        }
+    </script>
 }
