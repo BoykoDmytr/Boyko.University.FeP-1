@@ -43,3 +43,11 @@ These functions perform specific tasks:
   - Setup Github repository ✔
   - Test graph plotting feature for accuracy and performance ✔
   - Document graph plotting implementation details ✔
+
+ ## Week 2
+- Implement feature: Scientific Mode
+  - Configure Continuous Integration/Continuous Delivery ✔
+  - Integrate graph plotting functionality with mathematical calculations
+  - Develop core structure and architecture of the calculator application
+  - Research and select appropriate libraries or frameworks for mathematical calculations ✔
+
