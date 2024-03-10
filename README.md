@@ -1,13 +1,13 @@
-## Author
+### Author
 Dmytro Boyko FeP-21
 
 dimabojko501@gmail.com
 
 https://t.me/DEMONWASD
 
-## Getting Started
+### Getting Started
 Press the project start button labeled "http" or in the "PowerShell for Developers" console, execute the command "dotnet run".
-## Project Documentation
+### Project Documentation
 - Week 1
   
 Styles
