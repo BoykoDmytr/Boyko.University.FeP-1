@@ -38,6 +38,7 @@ These functions perform specific tasks:
   
 - Week 2
  - Calculator
+   
 Basic Arithmetic Operations: Addition, subtraction, multiplication, and division.
 Power and Root Functions: Calculate the power of a number and find its square root.
 Percentage Calculation: Determine the percentage of a number.
