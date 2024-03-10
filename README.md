@@ -8,7 +8,7 @@ https://t.me/DEMONWASD
 ### Getting Started
 Press the project start button labeled "http" or in the "PowerShell for Developers" console, execute the command "dotnet run".
 ### Project Documentation
-# Week 1
+#### Week 1
   
 Styles
 Defines styles for various elements on the page, including text field dimensions and graphical output.
