@@ -1,14 +1,14 @@
-### Author
+# Author
 Dmytro Boyko FeP-21
 
 dimabojko501@gmail.com
 
 https://t.me/DEMONWASD
 
-### Getting Started
+# Getting Started
 Press the project start button labeled "http" or in the "PowerShell for Developers" console, execute the command "dotnet run".
-### Project Documentation
-#### Week 1
+# Project Documentation
+### Week 1
   
 Styles
 Defines styles for various elements on the page, including text field dimensions and graphical output.
@@ -36,7 +36,7 @@ These functions perform specific tasks:
 - plotGraph()
   - Plots the graph of the mathematical expression using the Plotly library and performs computations with the math.js library.
   
-# Week 2
+### Week 2
  - Calculator
    
 Basic Arithmetic Operations: Addition, subtraction, multiplication, and division.
@@ -65,7 +65,7 @@ Graph Plotting Mode: Switch to the graph plotting tab, enter a math expression w
  - Notes
    
 The calculator uses the math.js library for mathematical evaluations.
-### Project Task Decomposition
+# Project Task Decomposition
 - Develop user interface components for graph plotting
 - Develop core structure and architecture of the calculator application
 ## Week 1
