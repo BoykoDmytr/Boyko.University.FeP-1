@@ -86,6 +86,60 @@
         margin-top: 10px;
         font-weight: bold;
     }
+
+    #calculator {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    #calculator {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+        #calculator input,
+        #calculator select {
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        #calculator button {
+            width: 100px;
+            height: 60px;
+            font-size: 18px;
+            margin: 5px;
+        }
+
+        #calculator .keypad {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+    #calculator {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+        #calculator input,
+        #calculator select,
+        #calculator output {
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        #calculator button {
+            width: 80px;
+            height: 60px;
+            font-size: 18px;
+            margin: 5px;
+        }
+
+        #calculator .keypad {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
 </style>
 
 <div id="header">
@@ -103,32 +157,57 @@
     </div>
 
     <div id="calculator" style="display: none;">
-        <label for="num1">Enter Number 1:</label>
-        <input type="text" id="num1" />
-        <label for="num2">Enter Number 2:</label>
-        <input type="text" id="num2" />
+        <label for="expression">Enter Expression:</label>
+        <label for="result">Result:</label>
+        <output id="calculatorResult"></output>
+        <input type="text" id="expression" />
 
-        <label for="operation">Select Operation:</label>
-        <select id="operation">
-            <option value="add">Addition (+)</option>
-            <option value="subtract">Subtraction (-)</option>
-            <option value="multiply">Multiplication (*)</option>
-            <option value="divide">Division (/)</option>
-            <option value="power">Power (^)</option>
-            <option value="root">Root (√)</option>
-            <option value="percentage">Percentage (%)</option>
-        </select>
+        <div class="keypad">
+            <button onclick="appendToExpression('1')">1</button>
+            <button onclick="appendToExpression('2')">2</button>
+            <button onclick="appendToExpression('3')">3</button>
+            <button onclick="appendToExpression('+')">+</button>
+            <button onclick="appendToExpression('4')">4</button>
+            <button onclick="appendToExpression('5')">5</button>
+            <button onclick="appendToExpression('6')">6</button>
+            <button onclick="appendToExpression('-')">-</button>
+            <button onclick="appendToExpression('7')">7</button>
+            <button onclick="appendToExpression('8')">8</button>
+            <button onclick="appendToExpression('9')">9</button>
+            <button onclick="appendToExpression('*')">*</button>
+            <button onclick="appendToExpression('.')">.</button>
+            <button onclick="appendToExpression('0')">0</button>
+            <button onclick="appendToExpression('/')">/</button>
+            <button onclick="appendToExpression('(')">(</button>
+            <button onclick="appendToExpression(')')">)</button>
+            <button onclick="calculate()">=</button>
+        </div>
 
-        <button onclick="calculate()">Calculate</button>
-        <div id="calculatorResult"></div>
+        <div class="keypad">
+            <button onclick="appendToExpression('sin(')">sin</button>
+            <button onclick="appendToExpression('cos(')">cos</button>
+            <button onclick="appendToExpression('tan(')">tan</button>
+            <button onclick="appendToExpression('log(')">log</button>
+            <!-- Додавайте інші функції, які вам потрібно -->
+        </div>
     </div>
-</div>
 
 @section Scripts {
     <script src="https://cdn.jsdelivr.net/npm/mathjs-expression-parser@2.0.3/dist/mathjs-expression-parser.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.6.0/math.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script>
+
+       function appendToExpression(value) {
+       var expressionField = document.getElementById('expression');
+       expressionField.value += value;
+    }
+
+       function clearExpression() {
+       var expressionField = document.getElementById('expression');
+       expressionField.value = '';
+    }
+
         function toggleTab(tabName) {
             var graphTab = document.getElementById('graph');
             var calculatorTab = document.getElementById('calculator');
@@ -227,50 +306,67 @@
             Plotly.newPlot('plot', traces, layout);
         }
 
-        function calculate() {
-            var num1 = parseFloat(document.getElementById('num1').value);
-            var num2 = parseFloat(document.getElementById('num2').value);
-            var operation = document.getElementById('operation').value;
+            function calculate() {
+                var expression = document.getElementById('expression').value;
 
-            if (isNaN(num1)) {
-                alert("Please enter a valid number for Number 1.");
-                return;
-            }
+                try {
+                    var result = math.evaluate(expression);
+                    document.getElementById('calculatorResult').textContent = "Result: " + result;
+                } catch (error) {
+                    alert("Error evaluating the expression.");
+                }
 
-            var result;
-
-            switch (operation) {
-                case 'add':
-                    result = num1 + num2;
-                    break;
-                case 'subtract':
-                    result = num1 - num2;
-                    break;
-                case 'multiply':
-                    result = num1 * num2;
-                    break;
-                case 'divide':
-                    if (num2 === 0) {
-                        alert("Cannot divide by zero.");
-                        return;
-                    }
-                    result = num1 / num2;
-                    break;
-                case 'power':
-                    result = Math.pow(num1, num2);
-                    break;
-                case 'root':
-                    result = Math.sqrt(num1);
-                    break;
-                case 'percentage':
-                    result = (num1 * num2) / 100;
-                    break;
-                default:
-                    alert("Invalid operation selected.");
+                if (isNaN(num1)) {
+                    alert("Please enter a valid number for Number 1.");
                     return;
-            }
+                }
 
-            document.getElementById('calculatorResult').innerHTML = "Result: " + result;
-        }
+                var result;
+
+                switch (operation) {
+                    case 'add':
+                        result = num1 + num2;
+                        break;
+                    case 'subtract':
+                        result = num1 - num2;
+                        break;
+                    case 'multiply':
+                        result = num1 * num2;
+                        break;
+                    case 'divide':
+                        if (num2 === 0) {
+                            alert("Cannot divide by zero.");
+                            return;
+                        }
+                        result = num1 / num2;
+                        break;
+                    case 'power':
+                        result = Math.pow(num1, num2);
+                        break;
+                    case 'root':
+                        result = Math.sqrt(num1);
+                        break;
+                    case 'percentage':
+                        result = (num1 * num2) / 100;
+                        break;
+                    case 'sin':
+                        result = Math.sin(num1);
+                        break;
+                    case 'cos':
+                        result = Math.cos(num1);
+                        break;
+                    case 'tan':
+                        result = Math.tan(num1);
+                        break;
+                    case 'log':
+                        result = Math.log10(num1);
+                        break;
+                    default:
+                        alert("Invalid operation selected.");
+                        return;
+                }
+
+                document.getElementById('calculatorResult').innerHTML = "Result: " + result;
+            }
     </script>
 }
