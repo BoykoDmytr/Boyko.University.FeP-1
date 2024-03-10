@@ -9,7 +9,8 @@ https://t.me/DEMONWASD
 Press the project start button labeled "http" or in the "PowerShell for Developers" console, execute the command "dotnet run".
 ## Project Documentation
 - Week 1
- Styles
+  
+Styles
 Defines styles for various elements on the page, including text field dimensions and graphical output.
 
  HTML Expression Input Form
@@ -44,20 +45,24 @@ Trigonometric Functions: Compute sine, cosine, and tangent of an angle.
 Logarithmic Function: Calculate the logarithm of a number.
 
  - Graph Plotting
+   
 Math Expression Plot: Enter a mathematical expression, and the tool plots the corresponding graph.
 Customizable Graphs: Supports expressions with variables like 'x' and 'y'.
 Visualization Range: Graphs are displayed within a specified range on both the X and Y axes.
    
  - Interface
+   
 User-Friendly Input: Enter mathematical expressions easily through a dedicated input field.
 Keypad for Convenience: Use a keypad with numerical keys and function keys for efficient input.
 Responsive Design: The application is designed for usability on various devices.
 
  - Usage
+   
 Calculator Mode: Select the calculator tab, enter an expression, and press the '=' button to calculate the result. The answer is displayed below the input field.
 Graph Plotting Mode: Switch to the graph plotting tab, enter a math expression with 'x' or 'y', and click the "Plot Graph" button. The graph will be displayed in the designated area.
 
  - Notes
+   
 The calculator uses the math.js library for mathematical evaluations.
 ## Project Task Decomposition
 - Develop user interface components for graph plotting
