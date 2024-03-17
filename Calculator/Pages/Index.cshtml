@@ -141,12 +141,96 @@
             gap: 10px;
         }
 </style>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+
+    #header {
+        background-color: #403030;
+        padding: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+        #header h3 {
+            color: white;
+        }
+
+    button {
+        padding: 10px;
+        font-size: 14px;
+        margin: 5px;
+        background-color: #4CAF50; /* Зелений колір кнопок */
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+        button:hover {
+            background-color: #45a049; /* Затемнений колір кнопок при наведенні курсору */
+        }
+
+    #content {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    #equationSolver {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        background-color: #f9f9f9;
+        display: none;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input {
+        padding: 5px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #equationResult {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    #equationSolver button {
+        padding: 10px;
+        font-size: 14px;
+        margin: 5px;
+        background-color: #008CBA; /* Синій колір кнопок */
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+        #equationSolver button:hover {
+            background-color: #0077A3; /* Затемнений колір кнопок при наведенні курсору */
+        }
+
+    #equationSolver .button-container {
+        margin-top: 10px;
+    }
+</style>
+
 
 <div id="header">
     <h3>Select an Option:</h3>
     <button onclick="toggleTab('graph')">Graph Plotter</button>
     <button onclick="toggleTab('calculator')">Calculator</button>
+    <button onclick="toggleTab('equationSolver')">Equation Solver</button>
 </div>
+
+
 
 <div id="content">
     <div id="graph" style="display: none;">
@@ -189,6 +273,28 @@
             <button onclick="appendToExpression('log(')">log</button>
         </div>
     </div>
+    <div id="equationSolver" style="display: none;">
+        <div>
+            <label for="a">Enter coefficient a:</label>
+            <input type="number" id="a" step="any">
+        </div>
+        <div>
+            <label for="b">Enter coefficient b:</label>
+            <input type="number" id="b" step="any">
+        </div>
+        <div>
+            <input type="checkbox" id="includeC" onchange="toggleThirdField()">
+            <label for="includeC">Include coefficient c (for quadratic equation)</label>
+        </div>
+        <div id="cField" style="display: none;">
+            <label for="c">Enter coefficient c:</label>
+            <input type="number" id="c" step="any">
+        </div>
+        <button onclick="solveEquation()">Solve Equation</button>
+        <div id="result"></div>
+        <div id="steps"></div>
+    </div>
+</div>
 
 @section Scripts {
     <script src="https://cdn.jsdelivr.net/npm/mathjs-expression-parser@2.0.3/dist/mathjs-expression-parser.min.js"></script>
@@ -209,21 +315,35 @@
         function toggleTab(tabName) {
             var graphTab = document.getElementById('graph');
             var calculatorTab = document.getElementById('calculator');
+            var equationSolverTab = document.getElementById('equationSolver');
             var plotDiv = document.getElementById('plot');
             var calculatorResultDiv = document.getElementById('calculatorResult');
+            var equationResultDiv = document.getElementById('equationResult');
 
             if (tabName === 'graph') {
                 graphTab.style.display = 'block';
                 calculatorTab.style.display = 'none';
+                equationSolverTab.style.display = 'none';
                 calculatorResultDiv.style.display = 'none';
+                equationResultDiv.style.display = 'none';
                 plotDiv.style.display = 'block';
             } else if (tabName === 'calculator') {
                 graphTab.style.display = 'none';
                 calculatorTab.style.display = 'block';
+                equationSolverTab.style.display = 'none';
                 calculatorResultDiv.style.display = 'block';
+                equationResultDiv.style.display = 'none';
+                plotDiv.style.display = 'none';
+            } else if (tabName === 'equationSolver') {
+                graphTab.style.display = 'none';
+                calculatorTab.style.display = 'none';
+                equationSolverTab.style.display = 'block';
+                calculatorResultDiv.style.display = 'none';
+                equationResultDiv.style.display = 'block';
                 plotDiv.style.display = 'none';
             }
         }
+
 
         function addToExpression(value) {
             var expressionField = document.getElementById('mathExpression');
@@ -304,7 +424,7 @@
             Plotly.newPlot('plot', traces, layout);
         }
 
-            function calculate() {
+        function calculate() {
                 var expression = document.getElementById('expression').value;
 
                 try {
@@ -366,5 +486,88 @@
 
                 document.getElementById('calculatorResult').innerHTML = "Result: " + result;
             }
+
+
+
+
+        function addToExpression(value) {
+            var equationInput = document.getElementById('equationInput');
+            equationInput.value += value;
+        }
+
+        function clearExpression() {
+            var equationInput = document.getElementById('equationInput');
+            equationInput.value = '';
+        }
+
+        function toggleThirdField() {
+            var cField = document.getElementById('cField');
+            cField.style.display = document.getElementById('includeC').checked ? 'block' : 'none';
+        }
+
+        function solveEquation() {
+            var a = parseFloat(document.getElementById('a').value);
+            var b = parseFloat(document.getElementById('b').value);
+            var c = parseFloat(document.getElementById('c').value);
+
+            var isQuadratic = document.getElementById('includeC').checked;
+
+            try {
+                var result;
+                if (isNaN(a) || isNaN(b)) {
+                    throw new Error('Coefficients a and b must be numbers.');
+                }
+                if (isQuadratic && isNaN(c)) {
+                    throw new Error('Coefficient c must be provided for quadratic equation.');
+                }
+                if (isQuadratic) {
+                    result = solveQuadraticEquation(a, b, c);
+                } else {
+                    result = solveLinearEquation(a, b);
+                }
+                document.getElementById('result').innerText = 'Solution(s): ' + result.join(', ');
+            } catch (error) {
+                document.getElementById('result').innerText = 'Error: ' + error.message;
+            }
+        }
+
+        function solveLinearEquation(a, b) {
+            if (a === 0) {
+                throw new Error('The coefficient "a" must not be zero.');
+            }
+            var solution = -b / a;
+            return ['x = ' + solution];
+        }
+
+        function solveQuadraticEquation(a, b, c) {
+            var discriminant = b * b - 4 * a * c;
+            if (discriminant < 0) {
+                throw new Error('The quadratic equation has no real roots.');
+            }
+            var sqrtDiscriminant = Math.sqrt(discriminant);
+            var denominator = 2 * a;
+            var x1 = (-b + sqrtDiscriminant) / denominator;
+            var x2 = (-b - sqrtDiscriminant) / denominator;
+            if (discriminant === 0) {
+                return ['x = ' + x1];
+            } else {
+                return ['x1 = ' + x1, 'x2 = ' + x2];
+            }
+        }
+
+
+        function showStepExplanation(step) {
+            // Отримуємо елемент div для виведення кроків
+            var stepsDiv = document.getElementById('steps');
+
+            // Створюємо новий елемент для кроку
+            var stepElement = document.createElement('p');
+            stepElement.textContent = step;
+
+            // Додаємо новий елемент до div
+            stepsDiv.appendChild(stepElement);
+        }
+
+
     </script>
 }
