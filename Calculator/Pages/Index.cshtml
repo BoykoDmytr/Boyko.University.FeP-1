@@ -273,6 +273,7 @@
             <button onclick="appendToExpression('log(')">log</button>
         </div>
     </div>
+
     <div id="equationSolver" style="display: none;">
         <div>
             <label for="a">Enter coefficient a:</label>
@@ -557,14 +558,11 @@
 
 
         function showStepExplanation(step) {
-            // Отримуємо елемент div для виведення кроків
             var stepsDiv = document.getElementById('steps');
 
-            // Створюємо новий елемент для кроку
             var stepElement = document.createElement('p');
             stepElement.textContent = step;
 
-            // Додаємо новий елемент до div
             stepsDiv.appendChild(stepElement);
         }
 
