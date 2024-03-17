@@ -526,36 +526,69 @@
                 } else {
                     result = solveLinearEquation(a, b);
                 }
-                document.getElementById('result').innerText = 'Solution(s): ' + result.join(', ');
+
+                // Clear previous steps
+                clearSteps();
+
+                // Show steps explanation
+                result.forEach(function (step) {
+                    showStepExplanation(step);
+                });
+
+                // Show solution
+                var solution = result[result.length - 1]; // Last step is the solution
+                
+
             } catch (error) {
                 document.getElementById('result').innerText = 'Error: ' + error.message;
             }
         }
+
 
         function solveLinearEquation(a, b) {
             if (a === 0) {
                 throw new Error('The coefficient "a" must not be zero.');
             }
             var solution = -b / a;
-            return ['x = ' + solution];
+            return ['Step 1: Divide both sides by coefficient "a"', 'Step 2: Solve for x: x = -b / a', 'Solution: x = ' + solution];
         }
 
         function solveQuadraticEquation(a, b, c) {
+            var steps = [];
+            if (a === 0) {
+                throw new Error('The coefficient "a" must not be zero.');
+            }
             var discriminant = b * b - 4 * a * c;
+            steps.push('Step 1: Calculate the discriminant: b^2 - 4ac');
+            steps.push('Step 2: If the discriminant is negative, the equation has no real roots.');
+            steps.push('Step 3: If the discriminant is zero, the equation has one real root.');
+            steps.push('Step 4: If the discriminant is positive, the equation has two distinct real roots.');
             if (discriminant < 0) {
-                throw new Error('The quadratic equation has no real roots.');
+                steps.push('Discriminant is negative. The quadratic equation has no real roots.');
+                return steps;
             }
             var sqrtDiscriminant = Math.sqrt(discriminant);
             var denominator = 2 * a;
             var x1 = (-b + sqrtDiscriminant) / denominator;
             var x2 = (-b - sqrtDiscriminant) / denominator;
             if (discriminant === 0) {
-                return ['x = ' + x1];
+                steps.push('Discriminant is zero. The quadratic equation has one real root.');
+                steps.push('Root: x = -b / (2a)');
+                steps.push('Root: x = ' + x1);
             } else {
-                return ['x1 = ' + x1, 'x2 = ' + x2];
+                steps.push('Discriminant is positive. The quadratic equation has two distinct real roots.');
+                steps.push('Root 1: x = (-b + √(b^2 - 4ac)) / (2a)');
+                steps.push('Root 2: x = (-b - √(b^2 - 4ac)) / (2a)');
+                steps.push('Root 1: x = ' + x1);
+                steps.push('Root 2: x = ' + x2);
             }
+            return steps;
         }
 
+        function clearSteps() {
+            var stepsDiv = document.getElementById('steps');
+            stepsDiv.innerHTML = ''; // Clear all previous steps
+        }
 
         function showStepExplanation(step) {
             var stepsDiv = document.getElementById('steps');
@@ -565,6 +598,7 @@
 
             stepsDiv.appendChild(stepElement);
         }
+
 
 
     </script>
