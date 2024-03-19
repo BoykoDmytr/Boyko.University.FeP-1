@@ -8,7 +8,7 @@ https://t.me/DEMONWASD
 # Getting Started
 Press the project start button labeled "http" or in the "PowerShell for Developers" console, execute the command "dotnet run".
 # Project Documentation
-### Week 1
+## Week 1
   
 Styles
 Defines styles for various elements on the page, including text field dimensions and graphical output.
@@ -38,7 +38,7 @@ These functions perform specific tasks:
 
 
   
-### Week 2
+## Week 2
  - Calculator
    
 Basic Arithmetic Operations: Addition, subtraction, multiplication, and division.
@@ -67,9 +67,33 @@ Graph Plotting Mode: Switch to the graph plotting tab, enter a math expression w
  - Notes
    
 The calculator uses the math.js library for mathematical evaluations.
+
+
+## Week 3
+- Equation Solver
+
+Basic Operations: Solves linear and quadratic equations. Provides step-by-step explanations of the solution process.
+
+- Interface
+
+Convenient Input: Easily input mathematical expressions through dedicated input fields.
+Keypad for Convenience: Utilize a keypad featuring numerical and functional keys for efficient input.
+Responsive Design: The application is designed to be used across various devices.
+
+- Usage
+
+Equation Solver Mode: Select the equation solver tab, choose whether to solve a linear or quadratic equation by selecting the appropriate checkbox. Press the "Solve Equation" button to compute the result.
+
+- Notes
+
+The Equation Solver utilizes the math.js library for mathematical computations.
+
 # Project Task Decomposition
 - Develop user interface components for graph plotting
 - Develop core structure and architecture of the calculator application
+- Develop algorithms for solving linear and quadratic equations
+
+
 ## Week 1
 - Implement feature: Graph Plotter ✔
   - Develop user interface components for graph plotting ✔
@@ -77,10 +101,17 @@ The calculator uses the math.js library for mathematical evaluations.
   - Test graph plotting feature for accuracy and performance ✔
   - Document graph plotting implementation details ✔
 
- ## Week 2
+## Week 2
 - Implement feature: Scientific Mode ✔
   - Configure Continuous Integration/Continuous Delivery 
   - Integrate graph plotting functionality with mathematical calculations ✔
   - Develop core structure and architecture of the calculator application ✔
   - Research and select appropriate libraries or frameworks for mathematical calculations ✔
+
+## Week 3
+- Implement feature: Equation Solver ✔
+  - Develop algorithms for solving linear and quadratic equations ✔
+  - Create user interface elements for inputting equations and displaying solutions ✔
+  - Implement step-by-step explanation feature for equation solutions ✔
+  - Conduct thorough testing of equation solving functionality ✔
 
