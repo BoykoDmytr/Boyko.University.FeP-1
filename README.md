@@ -71,6 +71,7 @@ The calculator uses the math.js library for mathematical evaluations.
 
 ### Week 3
 - Equation Solver
+
 Basic Operations: Solves linear and quadratic equations. Provides step-by-step explanations of the solution process.
 
 - Interface
