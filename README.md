@@ -8,7 +8,7 @@ https://t.me/DEMONWASD
 # Getting Started
 Press the project start button labeled "http" or in the "PowerShell for Developers" console, execute the command "dotnet run".
 # Project Documentation
-### Week 1
+## Week 1
   
 Styles
 Defines styles for various elements on the page, including text field dimensions and graphical output.
@@ -38,7 +38,7 @@ These functions perform specific tasks:
 
 
   
-### Week 2
+## Week 2
  - Calculator
    
 Basic Arithmetic Operations: Addition, subtraction, multiplication, and division.
@@ -69,7 +69,7 @@ Graph Plotting Mode: Switch to the graph plotting tab, enter a math expression w
 The calculator uses the math.js library for mathematical evaluations.
 
 
-### Week 3
+## Week 3
 - Equation Solver
 
 Basic Operations: Solves linear and quadratic equations. Provides step-by-step explanations of the solution process.
