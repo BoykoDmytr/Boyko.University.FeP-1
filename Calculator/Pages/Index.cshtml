@@ -99,6 +99,7 @@
     <button onclick="toggleTab('graph')">Graph Plotter</button>
     <button onclick="toggleTab('calculator')">Calculator</button>
     <button onclick="toggleTab('equationSolver')">Equation Solver</button>
+    <button onclick="toggleTab('unitConverter')">Unit Converter</button>
 </div>
 
 
@@ -168,6 +169,43 @@
         <div id="result"></div>
         <div id="steps"></div>
     </div>
+
+    <div id="unitConverter" style="display: none;">
+        <label for="unitInput">Введіть значення:</label>
+        <input type="number" id="unitInput" />
+        <select id="inputUnit" onchange="updateOutputUnits()">
+            <optgroup label="Довжина">
+                <option value="meter">Meter</option>
+                <option value="centimeter">Centimeter</option>
+                <option value="millimeter">Millimeter</option>
+            </optgroup>
+            <optgroup label="Маса">
+                <option value="kilogram">Kilogram</option>
+                <option value="gram">Gram</option>
+                <option value="milligram">Milligram</option>
+            </optgroup>
+            <optgroup label="Площа">
+                <option value="squareMeter">Square Meter</option>
+                <option value="squareCentimeter">Square Centimeter</option>
+                <option value="hectare">Hectare</option>
+            </optgroup>
+            <optgroup label="Час">
+                <option value="second">Second</option>
+                <option value="minute">Minute</option>
+                <option value="hour">Hour</option>
+            </optgroup>
+            <optgroup label="Об'єм">
+                <option value="cubicMeter">Cubic Meter</option>
+                <option value="liter">Liter</option>
+                <option value="milliliter">Milliliter</option>
+            </optgroup>
+        </select>
+        <label for="outputUnit">Вихідна одиниця:</label>
+        <select id="outputUnit"></select>
+        <button onclick="convertUnits()">Конвертувати</button>
+        <div id="conversionResult"></div>
+    </div>
+
 </div>
 
 @section Scripts {
@@ -190,33 +228,52 @@
             var graphTab = document.getElementById('graph');
             var calculatorTab = document.getElementById('calculator');
             var equationSolverTab = document.getElementById('equationSolver');
+            var unitConverterTab = document.getElementById('unitConverter'); 
+
             var plotDiv = document.getElementById('plot');
             var calculatorResultDiv = document.getElementById('calculatorResult');
             var equationResultDiv = document.getElementById('equationResult');
+            var conversionResultDiv = document.getElementById('conversionResult'); 
 
             if (tabName === 'graph') {
                 graphTab.style.display = 'block';
                 calculatorTab.style.display = 'none';
                 equationSolverTab.style.display = 'none';
+                unitConverterTab.style.display = 'none'; 
                 calculatorResultDiv.style.display = 'none';
                 equationResultDiv.style.display = 'none';
+                conversionResultDiv.style.display = 'none'; 
                 plotDiv.style.display = 'block';
             } else if (tabName === 'calculator') {
                 graphTab.style.display = 'none';
                 calculatorTab.style.display = 'block';
                 equationSolverTab.style.display = 'none';
+                unitConverterTab.style.display = 'none'; 
                 calculatorResultDiv.style.display = 'block';
                 equationResultDiv.style.display = 'none';
+                conversionResultDiv.style.display = 'none'; 
                 plotDiv.style.display = 'none';
             } else if (tabName === 'equationSolver') {
                 graphTab.style.display = 'none';
                 calculatorTab.style.display = 'none';
                 equationSolverTab.style.display = 'block';
+                unitConverterTab.style.display = 'none'; 
                 calculatorResultDiv.style.display = 'none';
                 equationResultDiv.style.display = 'block';
+                conversionResultDiv.style.display = 'none'; 
+                plotDiv.style.display = 'none';
+            } else if (tabName === 'unitConverter') {
+                graphTab.style.display = 'none';
+                calculatorTab.style.display = 'none';
+                equationSolverTab.style.display = 'none';
+                unitConverterTab.style.display = 'block';
+                calculatorResultDiv.style.display = 'none';
+                equationResultDiv.style.display = 'none';
+                conversionResultDiv.style.display = 'block';
                 plotDiv.style.display = 'none';
             }
         }
+
 
 
         function addToExpression(value) {
@@ -466,5 +523,166 @@
             stepsDiv.appendChild(stepElement);
         }
 
+
+
+        function convertUnits() {
+            var inputValue = parseFloat(document.getElementById('unitInput').value);
+            var inputUnit = document.getElementById('inputUnit').value;
+            var outputUnit = document.getElementById('outputUnit').value;
+
+            if (isNaN(inputValue)) {
+                alert("Please enter a valid number for the input value.");
+                return;
+            }
+
+            var result = performConversion(inputValue, inputUnit, outputUnit);
+
+            document.getElementById('conversionResult').innerHTML = "Результат: " + result + " " + outputUnit;
+        }
+
+        function updateOutputUnits() {
+            var inputUnit = document.getElementById('inputUnit').value;
+            var outputUnitSelect = document.getElementById('outputUnit');
+            outputUnitSelect.innerHTML = "";
+
+            var outputUnits = [];
+
+            switch (inputUnit) {
+                case 'meter':
+                    outputUnits = ['centimeter', 'millimeter'];
+                    break;
+                case 'centimeter':
+                    outputUnits = ['meter', 'millimeter'];
+                    break;
+                case 'millimeter':
+                    outputUnits = ['meter', 'centimeter'];
+                    break;
+                case 'kilogram':
+                    outputUnits = ['gram', 'milligram'];
+                    break;
+                case 'gram':
+                    outputUnits = ['kilogram', 'milligram'];
+                    break;
+                case 'milligram':
+                    outputUnits = ['kilogram', 'gram'];
+                    break;
+                case 'second':
+                    outputUnits = ['minute', 'hour'];
+                    break;
+                case 'minute':
+                    outputUnits = ['second', 'hour'];
+                    break;
+                case 'hour':
+                    outputUnits = ['second', 'minute'];
+                    break;
+                case 'squareMeter':
+                    outputUnits = ['squareCentimeter', 'hectare'];
+                    break;
+                case 'squareCentimeter':
+                    outputUnits = ['squareMeter', 'hectare'];
+                    break;
+                case 'hectare':
+                    outputUnits = ['squareMeter', 'squareCentimeter'];
+                    break;
+                case 'liter':
+                    outputUnits = ['milliliter', 'cubicMeter'];
+                    break;
+                case 'milliliter':
+                    outputUnits = ['liter', 'cubicMeter'];
+                    break;
+                case 'cubicMeter':
+                    outputUnits = ['liter', 'milliliter'];
+                    break;
+            }
+
+            outputUnits.forEach(function (unit) {
+                var option = document.createElement('option');
+                option.value = unit;
+                option.text = unit;
+                outputUnitSelect.appendChild(option);
+            });
+        }
+
+        function performConversion(value, inputUnit, outputUnit) {
+            if (isNaN(value)) {
+                alert("Please enter a valid number for the input value.");
+                return;
+            }
+
+            // Конвертація одиниць вимірювання довжини
+            if (inputUnit === 'meter' && outputUnit === 'centimeter') {
+                return value * 100; 
+            } else if (inputUnit === 'meter' && outputUnit === 'millimeter') {
+                return value * 1000; 
+            } else if (inputUnit === 'centimeter' && outputUnit === 'meter') {
+                return value / 100; 
+            } else if (inputUnit === 'centimeter' && outputUnit === 'millimeter') {
+                return value * 10; 
+            } else if (inputUnit === 'millimeter' && outputUnit === 'meter') {
+                return value / 1000; 
+            } else if (inputUnit === 'millimeter' && outputUnit === 'centimeter') {
+                return value / 10;
+
+            // Конвертація одиниць вимірювання ваги
+            } else if (inputUnit === 'kilogram' && outputUnit === 'gram') {
+                return value * 1000; 
+            } else if (inputUnit === 'kilogram' && outputUnit === 'milligram') {
+                return value * 1000000; 
+            } else if (inputUnit === 'gram' && outputUnit === 'kilogram') {
+                return value / 1000;
+            } else if (inputUnit === 'gram' && outputUnit === 'milligram') {
+                return value * 1000; 
+            } else if (inputUnit === 'milligram' && outputUnit === 'kilogram') {
+                return value / 1000000; 
+            } else if (inputUnit === 'milligram' && outputUnit === 'gram') {
+                return value / 1000; 
+
+            // Конвертація одиниць вимірювання часу
+            } else if (inputUnit === 'second' && outputUnit === 'minute') {
+                return value / 60; 
+            } else if (inputUnit === 'second' && outputUnit === 'hour') {
+                return value / 3600; 
+            } else if (inputUnit === 'minute' && outputUnit === 'second') {
+                return value * 60;
+            } else if (inputUnit === 'minute' && outputUnit === 'hour') {
+                return value / 60; 
+            } else if (inputUnit === 'hour' && outputUnit === 'second') {
+                return value * 3600;
+            } else if (inputUnit === 'hour' && outputUnit === 'minute') {
+                return value * 60; 
+
+            // Конвертація одиниць вимірювання площі
+            } else if (inputUnit === 'squareMeter' && outputUnit === 'squareCentimeter') {
+                return value * 10000; 
+            } else if (inputUnit === 'squareMeter' && outputUnit === 'hectare') {
+                return value / 10000; 
+            } else if (inputUnit === 'squareCentimeter' && outputUnit === 'squareMeter') {
+                return value / 10000; 
+            } else if (inputUnit === 'squareCentimeter' && outputUnit === 'hectare') {
+                return value / 100000000; 
+            } else if (inputUnit === 'hectare' && outputUnit === 'squareMeter') {
+                return value * 10000; 
+            } else if (inputUnit === 'hectare' && outputUnit === 'squareCentimeter') {
+                return value * 100000000; 
+
+            // Конвертація одиниць вимірювання об'єму
+            } else if (inputUnit === 'liter' && outputUnit === 'milliliter') {
+                return value * 1000; 
+            } else if (inputUnit === 'liter' && outputUnit === 'cubicMeter') {
+                return value / 1000; 
+            } else if (inputUnit === 'milliliter' && outputUnit === 'liter') {
+                return value / 1000; 
+            } else if (inputUnit === 'milliliter' && outputUnit === 'cubicMeter') {
+                return value / 1000000; 
+            } else if (inputUnit === 'cubicMeter' && outputUnit === 'liter') {
+                return value * 1000; 
+            } else if (inputUnit === 'cubicMeter' && outputUnit === 'milliliter') {
+                return value * 1000000; 
+
+            } else {
+                alert("Unable to convert between the selected units.");
+                return;
+            }
+        }
     </script>
 }
