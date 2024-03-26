@@ -107,14 +107,15 @@ is designed for use on various devices.
 
 Open the converter: Find the element or link on the website to open the unit converter.
 
-  - Enter value: In the input field, enter the numerical value you want to convert.
-  - Select input unit: Choose the unit of measurement corresponding to your entered value. Select it from the drop-down list.
-  - Select output unit: Choose the unit of measurement to which you want to convert your entered value. Also select it from the drop-down list.
-  - Convert: Press the "Convert" button to get the conversion result.
-  - Get result: After pressing the "Convert" button, you will see the conversion result displayed next to the entered value.
+  1. Enter value: In the input field, enter the numerical value you want to convert.
+  2. Select input unit: Choose the unit of measurement corresponding to your entered value. Select it from the drop-down list.
+  3. Select output unit: Choose the unit of measurement to which you want to convert your entered value. Also select it from the drop-down list.
+  4. Convert: Press the "Convert" button to get the conversion result.
+  5. Get result: After pressing the "Convert" button, you will see the conversion result displayed next to the entered value.
 
 - Notes
 
+Nothing
 
 # Project Task Decomposition
 - Develop user interface components for graph plotting
