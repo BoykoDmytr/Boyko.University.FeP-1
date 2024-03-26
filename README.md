@@ -98,6 +98,7 @@ The Equation Solver utilizes the math.js library for mathematical computations.
 Basic Operations: Converts units of measurement such as Length, Weight, Area, Time, and Volume.
 
 - Interface
+
 Convenient Input: Easily input measurement unit data using special input fields. Keyboard for convenience:
 Use a keyboard with numerical and functional keys for efficient input. Adaptive Design: The application
 is designed for use on various devices.
