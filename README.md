@@ -18,11 +18,11 @@ Contains a form with an input field for mathematical expressions, a button for g
 
  Scripts Section
 - Includes three scripts added to the page:
-  1. Expression Parsing Script
+    1. Expression Parsing Script
     - Loads a library for parsing mathematical expressions.
-  2. math.js Library Script
+    2. math.js Library Script
     - Loads the math.js library for computational tasks.
-  3. Plotly Library Script
+    3. Plotly Library Script
     - Loads the Plotly library for graph plotting.
 
 
