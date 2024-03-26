@@ -114,7 +114,7 @@ Open the converter: Find the element or link on the website to open the unit con
   - Get result: After pressing the "Convert" button, you will see the conversion result displayed next to the entered value.
 
 - Notes
-  --------
+
 
 # Project Task Decomposition
 - Develop user interface components for graph plotting
