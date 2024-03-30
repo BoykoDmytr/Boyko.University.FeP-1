@@ -170,7 +170,7 @@ Users must ensure proper formatting of matrices for accurate calculations.
 
 ## Week 2
 - Implement feature: Scientific Mode ✔
-  - Configure Continuous Integration/Continuous Delivery 
+  - Configure Continuous Integration/Continuous Delivery 🕒
   - Integrate graph plotting functionality with mathematical calculations ✔
   - Develop core structure and architecture of the calculator application ✔
   - Research and select appropriate libraries or frameworks for mathematical calculations ✔
@@ -186,7 +186,7 @@ Users must ensure proper formatting of matrices for accurate calculations.
 - Implement feature: Unit Converter ✔
   - Design user interface for unit conversion functionality ✔
   - Develop conversion algorithms for various units of measurement ✔
-  - Integrate unit conversion feature with other calculator functionalities
+  - Integrate unit conversion feature with other calculator functionalities 🕒
   - Test unit conversion feature with different input values and units ✔
  
 ## Week 5
