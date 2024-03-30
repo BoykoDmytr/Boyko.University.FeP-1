@@ -100,6 +100,7 @@
     <button onclick="toggleTab('calculator')">Calculator</button>
     <button onclick="toggleTab('equationSolver')">Equation Solver</button>
     <button onclick="toggleTab('unitConverter')">Unit Converter</button>
+    <button onclick="toggleTab('matrixCalculator')">Matrix Calculator</button>
 </div>
 
 
@@ -207,6 +208,23 @@
         <div id="conversionResult"></div>
     </div>
 
+    <div id="matrixCalculator" style="display: none;">
+        <div>
+            <label for="matrixA">Enter Matrix A:</label>
+            <textarea id="matrixA" rows="3" cols="30"></textarea>
+        </div>
+        <div>
+            <label for="matrixB">Enter Matrix B:</label>
+            <textarea id="matrixB" rows="3" cols="30"></textarea>
+        </div>
+        <button onclick="performMatrixOperation('add')">Add</button>
+        <button onclick="performMatrixOperation('subtract')">Subtract</button>
+        <button onclick="performMatrixOperation('multiply')">Multiply</button>
+        <button onclick="performMatrixOperation('determinant')">Calculate Determinant</button>
+        <button onclick="performMatrixOperation('inverse')">Calculate Inverse</button>
+        <div id="matrixResult"></div>
+    </div>
+
 </div>
 
 @section Scripts {
@@ -229,12 +247,14 @@
             var graphTab = document.getElementById('graph');
             var calculatorTab = document.getElementById('calculator');
             var equationSolverTab = document.getElementById('equationSolver');
-            var unitConverterTab = document.getElementById('unitConverter'); 
+            var unitConverterTab = document.getElementById('unitConverter');
+            var matrixCalculatorTab = document.getElementById('matrixCalculator'); 
 
             var plotDiv = document.getElementById('plot');
             var calculatorResultDiv = document.getElementById('calculatorResult');
             var equationResultDiv = document.getElementById('equationResult');
-            var conversionResultDiv = document.getElementById('conversionResult'); 
+            var conversionResultDiv = document.getElementById('conversionResult');
+            var matrixResultDiv = document.getElementById('matrixResult'); 
 
             if (tabName === 'graph') {
                 graphTab.style.display = 'block';
@@ -271,6 +291,17 @@
                 calculatorResultDiv.style.display = 'none';
                 equationResultDiv.style.display = 'none';
                 conversionResultDiv.style.display = 'block';
+                plotDiv.style.display = 'none';
+            } else if (tabName === 'matrixCalculator') { 
+                graphTab.style.display = 'none';
+                calculatorTab.style.display = 'none';
+                equationSolverTab.style.display = 'none';
+                unitConverterTab.style.display = 'none';
+                matrixCalculatorTab.style.display = 'block'; 
+                calculatorResultDiv.style.display = 'none';
+                equationResultDiv.style.display = 'none';
+                conversionResultDiv.style.display = 'none';
+                matrixResultDiv.style.display = 'block'; 
                 plotDiv.style.display = 'none';
             }
         }
@@ -700,5 +731,181 @@
                 return;
             }
         }
+
+
+        function addMatrices(matrix1, matrix2) {
+            if (matrix1.length !== matrix2.length || matrix1[0].length !== matrix2[0].length) {
+                throw new Error("Матриці мають різний розмір і не можуть бути додані.");
+            }
+
+            let result = [];
+
+            for (let i = 0; i < matrix1.length; i++) {
+                let row = [];
+                for (let j = 0; j < matrix1[i].length; j++) {
+                    row.push(matrix1[i][j] + matrix2[i][j]);
+                }
+                result.push(row);
+            }
+
+            return result;
+        }
+
+
+        function subtractMatrices(matrix1, matrix2) {
+            if (matrix1.length !== matrix2.length || matrix1[0].length !== matrix2[0].length) {
+                throw new Error("Матриці мають різний розмір і не можуть бути відняті одна від одної.");
+            }
+
+            let result = [];
+
+            for (let i = 0; i < matrix1.length; i++) {
+                let row = [];
+                for (let j = 0; j < matrix1[i].length; j++) {
+                    row.push(matrix1[i][j] - matrix2[i][j]);
+                }
+                result.push(row);
+            }
+
+            return result;
+        }
+
+
+        function multiplyMatrices(matrix1, matrix2) {
+            if (matrix1[0].length !== matrix2.length) {
+                throw new Error("Кількість стовпців першої матриці не дорівнює кількості рядків другої матриці. Множення не можливе.");
+            }
+
+            let result = [];
+
+            for (let i = 0; i < matrix1.length; i++) {
+                result[i] = [];
+                for (let j = 0; j < matrix2[0].length; j++) {
+                    result[i][j] = 0;
+                }
+            }
+
+            for (let i = 0; i < matrix1.length; i++) {
+                for (let j = 0; j < matrix2[0].length; j++) {
+                    for (let k = 0; k < matrix2.length; k++) {
+                        result[i][j] += matrix1[i][k] * matrix2[k][j];
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        function determinant(matrix) {
+            if (matrix.length !== matrix[0].length) {
+                throw new Error("Матриця повинна бути квадратною для обчислення детермінанту.");
+            }
+
+            if (matrix.length === 1) {
+                return matrix[0][0];
+            }
+
+            if (matrix.length === 2) {
+                return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+            }
+
+            let det = 0;
+
+            for (let i = 0; i < matrix.length; i++) {
+                const minor = [];
+
+                for (let j = 1; j < matrix.length; j++) {
+                    minor.push(matrix[j].filter((_, index) => index !== i));
+                }
+
+                det += matrix[0][i] * determinant(minor) * Math.pow(-1, i);
+            }
+
+            return det;
+        }
+
+        function inverse(matrix) {
+            if (matrix.length !== matrix[0].length) {
+                throw new Error("Матриця повинна бути квадратною для обчислення оберненої матриці.");
+            }
+
+            if (determinant(matrix) === 0) {
+                throw new Error("Матриця є виродженою, обернена матриця не існує.");
+            }
+
+            const n = matrix.length;
+            const identity = [];
+
+            for (let i = 0; i < n; i++) {
+                identity.push([]);
+                for (let j = 0; j < n; j++) {
+                    identity[i][j] = (i === j) ? 1 : 0;
+                }
+            }
+
+            const copy = matrix.map(row => [...row]);
+
+            for (let i = 0; i < n; i++) {
+                let scalar = copy[i][i];
+                for (let j = 0; j < n; j++) {
+                    copy[i][j] /= scalar;
+                    identity[i][j] /= scalar;
+                }
+
+                for (let k = 0; k < n; k++) {
+                    if (k === i) continue;
+                    scalar = copy[k][i];
+                    for (let j = 0; j < n; j++) {
+                        copy[k][j] -= copy[i][j] * scalar;
+                        identity[k][j] -= identity[i][j] * scalar;
+                    }
+                }
+            }
+
+            return identity;
+        }
+
+        function performMatrixOperation(operation) {
+            let matrixA = parseMatrix(document.getElementById('matrixA').value);
+            let matrixB = parseMatrix(document.getElementById('matrixB').value);
+
+            let result;
+            switch (operation) {
+                case 'add':
+                    result = addMatrices(matrixA, matrixB);
+                    break;
+                case 'subtract':
+                    result = subtractMatrices(matrixA, matrixB);
+                    break;
+                case 'multiply':
+                    result = multiplyMatrices(matrixA, matrixB);
+                    break;
+                case 'determinant':
+                    result = calculateDeterminant(matrixA);
+                    break;
+                case 'inverse':
+                    result = calculateInverse(matrixA);
+                    break;
+                default:
+                    throw new Error("Невідома матрична операція.");
+            }
+
+            displayMatrixResult(result);
+        }
+
+        function parseMatrix(matrixString) {
+            let rows = matrixString.trim().split('\n');
+            let matrix = rows.map(row => row.trim().split(/\s+/).map(parseFloat));
+            return matrix;
+        }
+
+        function displayMatrixResult(matrix) {
+            let resultDiv = document.getElementById('matrixResult');
+            resultDiv.innerHTML = "Result:<br>";
+            for (let i = 0; i < matrix.length; i++) {
+                resultDiv.innerHTML += matrix[i].join(' ') + "<br>";
+            }
+        }
+
     </script>
 }
