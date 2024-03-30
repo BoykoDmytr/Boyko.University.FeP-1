@@ -133,16 +133,16 @@ The same applies to finding the inverse matrix.
 
 - Usage:
 
-  1. Matrix Input:
+1. Matrix Input:
   Enter the elements of the matrix into the text field for Matrix A and Matrix B, separating them by spaces or new lines.
   Ensure that each row of the matrix is separated by a new line.
   The elements in each row should be separated by spaces.
 
-  2. Determinant Calculation:
+2. Determinant Calculation:
   After inputting the matrix, click the "Calculate Determinant" button.
   The determinant of the input matrix will be calculated and displayed below the input area.
   
-  3. Finding the Inverse Matrix:
+3. Finding the Inverse Matrix:
   After inputting the matrix, click the "Calculate Inverse Matrix" button.
   The inverse matrix will be found, calculated, and displayed below the input area.
 
