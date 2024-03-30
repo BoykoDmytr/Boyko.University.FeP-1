@@ -190,7 +190,7 @@ Users must ensure proper formatting of matrices for accurate calculations.
   - Test unit conversion feature with different input values and units ✔
  
 ## Week 5
- - Implement feature: Matrix Calculator ✔
+- Implement feature: Matrix Calculator ✔
   - Develop algorithms for matrix operations such as addition, subtraction, and multiplication ✔
   - Design user interface elements for matrix input and display ✔
   - Implement determinant calculation and inverse calculation functions ✔
