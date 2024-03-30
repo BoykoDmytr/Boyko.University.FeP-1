@@ -213,15 +213,21 @@
             <label for="matrixA">Enter Matrix A:</label>
             <textarea id="matrixA" rows="3" cols="30"></textarea>
         </div>
-        <div>
+        <div id="matrixBInput">
             <label for="matrixB">Enter Matrix B:</label>
             <textarea id="matrixB" rows="3" cols="30"></textarea>
         </div>
-        <button onclick="performMatrixOperation('add')">Add</button>
-        <button onclick="performMatrixOperation('subtract')">Subtract</button>
-        <button onclick="performMatrixOperation('multiply')">Multiply</button>
-        <button onclick="performMatrixOperation('determinant')">Calculate Determinant</button>
-        <button onclick="performMatrixOperation('inverse')">Calculate Inverse</button>
+        <div>
+            <label for="operationType">Operation:</label>
+            <select id="operationType" onchange="toggleMatrixBInput()">
+                <option value="add">Add</option>
+                <option value="subtract">Subtract</option>
+                <option value="multiply">Multiply</option>
+                <option value="determinant">Calculate Determinant</option>
+                <option value="inverse">Calculate Inverse</option>
+            </select>
+        </div>
+        <button onclick="performMatrixOperation()">Calculate</button>
         <div id="matrixResult"></div>
     </div>
 
@@ -248,7 +254,7 @@
             var calculatorTab = document.getElementById('calculator');
             var equationSolverTab = document.getElementById('equationSolver');
             var unitConverterTab = document.getElementById('unitConverter');
-            var matrixCalculatorTab = document.getElementById('matrixCalculator'); //j
+            var matrixCalculatorTab = document.getElementById('matrixCalculator'); 
 
             var plotDiv = document.getElementById('plot');
             var calculatorResultDiv = document.getElementById('calculatorResult');
@@ -796,40 +802,34 @@
             return result;
         }
 
-        function determinant(matrix) {
+        function calculateDeterminant(matrix) {
             if (matrix.length !== matrix[0].length) {
                 throw new Error("Матриця повинна бути квадратною для обчислення детермінанту.");
             }
 
-            if (matrix.length === 1) {
-                return matrix[0][0];
-            }
-
             if (matrix.length === 2) {
                 return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
-            }
-
-            let det = 0;
-
-            for (let i = 0; i < matrix.length; i++) {
-                const minor = [];
-
-                for (let j = 1; j < matrix.length; j++) {
-                    minor.push(matrix[j].filter((_, index) => index !== i));
+            } else {
+                let det = 0;
+                for (let i = 0; i < matrix.length; i++) {
+                    const minor = [];
+                    for (let j = 1; j < matrix.length; j++) {
+                        minor.push(matrix[j].filter((_, index) => index !== i));
+                    }
+                    det += matrix[0][i] * calculateDeterminant(minor) * Math.pow(-1, i);
                 }
-
-                det += matrix[0][i] * determinant(minor) * Math.pow(-1, i);
+                return det;
             }
-
-            return det;
         }
 
-        function inverse(matrix) {
+
+        function calculateInverse(matrix) {
             if (matrix.length !== matrix[0].length) {
                 throw new Error("Матриця повинна бути квадратною для обчислення оберненої матриці.");
             }
 
-            if (determinant(matrix) === 0) {
+            const det = calculateDeterminant(matrix);
+            if (det === 0) {
                 throw new Error("Матриця є виродженою, обернена матриця не існує.");
             }
 
@@ -865,12 +865,18 @@
             return identity;
         }
 
-        function performMatrixOperation(operation) {
+
+        function performMatrixOperation() {
+            let operationType = document.getElementById('operationType').value;
             let matrixA = parseMatrix(document.getElementById('matrixA').value);
-            let matrixB = parseMatrix(document.getElementById('matrixB').value);
+            let matrixB = null;
+
+            if (operationType !== 'determinant' && operationType !== 'inverse') {
+                matrixB = parseMatrix(document.getElementById('matrixB').value);
+            }
 
             let result;
-            switch (operation) {
+            switch (operationType) {
                 case 'add':
                     result = addMatrices(matrixA, matrixB);
                     break;
@@ -881,7 +887,7 @@
                     result = multiplyMatrices(matrixA, matrixB);
                     break;
                 case 'determinant':
-                    result = calculateDeterminant(matrixA);
+                    result = calculateDeterminant(matrixA); // Ось тут зміна
                     break;
                 case 'inverse':
                     result = calculateInverse(matrixA);
@@ -892,6 +898,8 @@
 
             displayMatrixResult(result);
         }
+
+
 
         function parseMatrix(matrixString) {
             let rows = matrixString.trim().split('\n');
@@ -906,6 +914,19 @@
                 resultDiv.innerHTML += matrix[i].join(' ') + "<br>";
             }
         }
+
+
+        function toggleMatrixBInput() {
+            let operationType = document.getElementById('operationType').value;
+            let matrixBInput = document.getElementById('matrixBInput');
+
+            if (operationType === 'determinant' || operationType === 'inverse') {
+                matrixBInput.style.display = 'none';
+            } else {
+                matrixBInput.style.display = 'block';
+            }
+        }
+
 
     </script>
 }
