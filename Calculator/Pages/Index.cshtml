@@ -250,69 +250,20 @@
     }
 
         function toggleTab(tabName) {
-            var graphTab = document.getElementById('graph');
-            var calculatorTab = document.getElementById('calculator');
-            var equationSolverTab = document.getElementById('equationSolver');
-            var unitConverterTab = document.getElementById('unitConverter');
-            var matrixCalculatorTab = document.getElementById('matrixCalculator'); 
+            var tabs = ['graph', 'calculator', 'equationSolver', 'unitConverter', 'matrixCalculator'];
 
-            var plotDiv = document.getElementById('plot');
-            var calculatorResultDiv = document.getElementById('calculatorResult');
-            var equationResultDiv = document.getElementById('equationResult');
-            var conversionResultDiv = document.getElementById('conversionResult');
-            var matrixResultDiv = document.getElementById('matrixResult'); 
-
-            if (tabName === 'graph') {
-                graphTab.style.display = 'block';
-                calculatorTab.style.display = 'none';
-                equationSolverTab.style.display = 'none';
-                unitConverterTab.style.display = 'none'; 
-                calculatorResultDiv.style.display = 'none';
-                equationResultDiv.style.display = 'none';
-                conversionResultDiv.style.display = 'none'; 
-                plotDiv.style.display = 'block';
-            } else if (tabName === 'calculator') {
-                graphTab.style.display = 'none';
-                calculatorTab.style.display = 'block';
-                equationSolverTab.style.display = 'none';
-                unitConverterTab.style.display = 'none'; 
-                calculatorResultDiv.style.display = 'block';
-                equationResultDiv.style.display = 'none';
-                conversionResultDiv.style.display = 'none'; 
-                plotDiv.style.display = 'none';
-            } else if (tabName === 'equationSolver') {
-                graphTab.style.display = 'none';
-                calculatorTab.style.display = 'none';
-                equationSolverTab.style.display = 'block';
-                unitConverterTab.style.display = 'none'; 
-                calculatorResultDiv.style.display = 'none';
-                equationResultDiv.style.display = 'block';
-                conversionResultDiv.style.display = 'none'; 
-                plotDiv.style.display = 'none';
-            } else if (tabName === 'unitConverter') {
-                graphTab.style.display = 'none';
-                calculatorTab.style.display = 'none';
-                equationSolverTab.style.display = 'none';
-                unitConverterTab.style.display = 'block';
-                calculatorResultDiv.style.display = 'none';
-                equationResultDiv.style.display = 'none';
-                conversionResultDiv.style.display = 'block';
-                plotDiv.style.display = 'none';
-            } else if (tabName === 'matrixCalculator') { 
-                graphTab.style.display = 'none';
-                calculatorTab.style.display = 'none';
-                equationSolverTab.style.display = 'none';
-                unitConverterTab.style.display = 'none';
-                matrixCalculatorTab.style.display = 'block'; 
-                calculatorResultDiv.style.display = 'none';
-                equationResultDiv.style.display = 'none';
-                conversionResultDiv.style.display = 'none';
-                matrixResultDiv.style.display = 'block'; 
-                plotDiv.style.display = 'none';
+            for (var i = 0; i < tabs.length; i++) {
+                var tab = document.getElementById(tabs[i]);
+                if (tabs[i] === tabName) {
+                    tab.style.display = 'block';
+                } else {
+                    tab.style.display = 'none';
+                }
             }
         }
 
 
+        //Функції для побудови графіків
 
         function addToExpression(value) {
             var expressionField = document.getElementById('mathExpression');
@@ -393,6 +344,10 @@
             Plotly.newPlot('plot', traces, layout);
         }
 
+
+
+
+        //Функція для звичайного калькулятора
         function calculate() {
                 var expression = document.getElementById('expression').value;
 
@@ -459,6 +414,7 @@
 
 
 
+        //Функції для розв'язування рівнянь з поясненнями
         function addToExpression(value) {
             var equationInput = document.getElementById('equationInput');
             equationInput.value += value;
@@ -509,7 +465,6 @@
             }
         }
 
-
         function solveLinearEquation(a, b) {
             var steps = [];
             steps.push('Step 1: Rearrange the equation if necessary to isolate the variable term.');
@@ -546,7 +501,6 @@
             return steps;
         }
 
-
         function clearSteps() {
             var stepsDiv = document.getElementById('steps');
             stepsDiv.innerHTML = ''; 
@@ -563,6 +517,9 @@
 
 
 
+
+
+        //Функції для конвертації різних одиниць
         function convertUnits() {
             var inputValue = parseFloat(document.getElementById('unitInput').value);
             var inputUnit = document.getElementById('inputUnit').value;
@@ -739,9 +696,14 @@
         }
 
 
+
+
+
+
+        //Функції для матричного калькулятора
         function addMatrices(matrix1, matrix2) {
             if (matrix1.length !== matrix2.length || matrix1[0].length !== matrix2[0].length) {
-                throw new Error("Матриці мають різний розмір і не можуть бути додані.");
+                throw new Error("Matrices are of different sizes and cannot be added.");
             }
 
             let result = [];
@@ -757,10 +719,9 @@
             return result;
         }
 
-
         function subtractMatrices(matrix1, matrix2) {
             if (matrix1.length !== matrix2.length || matrix1[0].length !== matrix2[0].length) {
-                throw new Error("Матриці мають різний розмір і не можуть бути відняті одна від одної.");
+                throw new Error("Matrices have different sizes and cannot be subtracted from each other.");
             }
 
             let result = [];
@@ -776,10 +737,9 @@
             return result;
         }
 
-
         function multiplyMatrices(matrix1, matrix2) {
             if (matrix1[0].length !== matrix2.length) {
-                throw new Error("Кількість стовпців першої матриці не дорівнює кількості рядків другої матриці. Множення не можливе.");
+                throw new Error("The number of columns of the first matrix is not equal to the number of rows of the second matrix. Multiplication is not possible.");
             }
 
             let result = [];
@@ -804,33 +764,53 @@
 
         function calculateDeterminant(matrix) {
             if (matrix.length !== matrix[0].length) {
-                throw new Error("Матриця повинна бути квадратною для обчислення детермінанту.");
+                throw new Error("The matrix is not square, so the determinant cannot be calculated.");
+            }
+
+            if (matrix.length === 1) {
+                return matrix[0][0];
             }
 
             if (matrix.length === 2) {
                 return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
-            } else {
-                let det = 0;
-                for (let i = 0; i < matrix.length; i++) {
-                    const minor = [];
-                    for (let j = 1; j < matrix.length; j++) {
-                        minor.push(matrix[j].filter((_, index) => index !== i));
-                    }
-                    det += matrix[0][i] * calculateDeterminant(minor) * Math.pow(-1, i);
-                }
-                return det;
             }
+
+            let det = 0;
+            for (let j = 0; j < matrix.length; j++) {
+                det += matrix[0][j] * cofactor(matrix, 0, j);
+            }
+
+            return det;
         }
 
+        function cofactor(matrix, row, col) {
+            return Math.pow(-1, row + col) * minor(matrix, row, col);
+        }
+
+        function minor(matrix, row, col) {
+            let minorMatrix = [];
+            for (let i = 0; i < matrix.length; i++) {
+                if (i !== row) {
+                    let minorRow = [];
+                    for (let j = 0; j < matrix[i].length; j++) {
+                        if (j !== col) {
+                            minorRow.push(matrix[i][j]);
+                        }
+                    }
+                    minorMatrix.push(minorRow);
+                }
+            }
+            return calculateDeterminant(minorMatrix);
+        }
 
         function calculateInverse(matrix) {
             if (matrix.length !== matrix[0].length) {
-                throw new Error("Матриця повинна бути квадратною для обчислення оберненої матриці.");
+                throw new Error("The matrix must be square to calculate the inverse of the matrix.");
             }
 
             const det = calculateDeterminant(matrix);
             if (det === 0) {
-                throw new Error("Матриця є виродженою, обернена матриця не існує.");
+                throw new Error("The matrix is degenerate, the inverse matrix does not exist.");
             }
 
             const n = matrix.length;
@@ -862,9 +842,11 @@
                 }
             }
 
-            return identity;
+            return applyPrecision(identity, 3);
         }
-
+        function applyPrecision(matrix, precision) {
+            return matrix.map(row => row.map(num => num.toFixed(precision)));
+        }
 
         function performMatrixOperation() {
             let operationType = document.getElementById('operationType').value;
@@ -887,19 +869,17 @@
                     result = multiplyMatrices(matrixA, matrixB);
                     break;
                 case 'determinant':
-                    result = calculateDeterminant(matrixA); // Ось тут зміна
+                    result = calculateDeterminant(matrixA);
                     break;
                 case 'inverse':
                     result = calculateInverse(matrixA);
                     break;
                 default:
-                    throw new Error("Невідома матрична операція.");
+                    throw new Error("Unknown matrix operation.");
             }
 
             displayMatrixResult(result);
         }
-
-
 
         function parseMatrix(matrixString) {
             let rows = matrixString.trim().split('\n');
@@ -907,14 +887,19 @@
             return matrix;
         }
 
-        function displayMatrixResult(matrix) {
+        function displayMatrixResult(result) {
             let resultDiv = document.getElementById('matrixResult');
             resultDiv.innerHTML = "Result:<br>";
-            for (let i = 0; i < matrix.length; i++) {
-                resultDiv.innerHTML += matrix[i].join(' ') + "<br>";
+
+            if (typeof result === 'number') {
+                resultDiv.innerHTML += result;
+            } else {
+                for (let i = 0; i < result.length; i++) {
+                    let row = result[i].map(num => num);
+                    resultDiv.innerHTML += row.join(' ') + "<br>";
+                }
             }
         }
-
 
         function toggleMatrixBInput() {
             let operationType = document.getElementById('operationType').value;
