@@ -117,11 +117,48 @@ Open the converter: Find the element or link on the website to open the unit con
 
 Nothing
 
+
+## Week 5
+- Matrix Calculator
+
+Basic Operations: Add, subtract, multiply, calculate the determinant, and find the inverse of a matrix
+
+- Interface:
+
+Matrix Input: Users can manually input matrices into the text fields designated for Matrix A and Matrix B. 
+There is also a selection of operations on matrices such as addition, subtraction, multiplication, determinant calculation, and finding the inverse matrix.
+"Calculate Determinant" Button: After inputting the matrix, users can press the "Calculate Determinant" button to compute the determinant of Matrix A.
+Displaying Result: The result, whether it's a determinant or an error message, is displayed below the input area.
+The same applies to finding the inverse matrix.
+
+- Usage:
+
+1. Matrix Input:
+  Enter the elements of the matrix into the text field for Matrix A and Matrix B, separating them by spaces or new lines.
+  Ensure that each row of the matrix is separated by a new line.
+  The elements in each row should be separated by spaces.
+
+2. Determinant Calculation:
+  After inputting the matrix, click the "Calculate Determinant" button.
+  The determinant of the input matrix will be calculated and displayed below the input area.
+  
+3. Finding the Inverse Matrix:
+  After inputting the matrix, click the "Calculate Inverse Matrix" button.
+  The inverse matrix will be found, calculated, and displayed below the input area.
+
+- Notes:
+
+To calculate the determinant, matrices must be square (with the same number of rows and columns).
+The determinant is displayed rounded to four decimal places.
+If any errors occur during calculations, such as invalid inputs or non-square matrices, corresponding error messages will be displayed.
+Users must ensure proper formatting of matrices for accurate calculations.
+
 # Project Task Decomposition
 - Develop user interface components for graph plotting
 - Develop core structure and architecture of the calculator application
 - Develop algorithms for solving linear and quadratic equations
 - Develop conversion algorithms for various units of measurement
+- Develop algorithms for matrix operations such as addition, subtraction, and multiplication
 
 
 ## Week 1
@@ -133,7 +170,7 @@ Nothing
 
 ## Week 2
 - Implement feature: Scientific Mode ✔
-  - Configure Continuous Integration/Continuous Delivery 
+  - Configure Continuous Integration/Continuous Delivery 🕒
   - Integrate graph plotting functionality with mathematical calculations ✔
   - Develop core structure and architecture of the calculator application ✔
   - Research and select appropriate libraries or frameworks for mathematical calculations ✔
@@ -149,7 +186,13 @@ Nothing
 - Implement feature: Unit Converter ✔
   - Design user interface for unit conversion functionality ✔
   - Develop conversion algorithms for various units of measurement ✔
-  - Integrate unit conversion feature with other calculator functionalities
+  - Integrate unit conversion feature with other calculator functionalities 🕒
   - Test unit conversion feature with different input values and units ✔
  
-
+## Week 5
+- Implement feature: Matrix Calculator ✔
+  - Develop algorithms for matrix operations such as addition, subtraction, and multiplication ✔
+  - Design user interface elements for matrix input and display ✔
+  - Implement determinant calculation and inverse calculation functions ✔
+  - Test matrix calculator functionalities with different matrix sizes and values ✔
+ 
