@@ -1,0 +1,83 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+#header {
+    background-color: #403030;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+    #header h3 {
+        color: white;
+    }
+
+button {
+    padding: 10px;
+    font-size: 14px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+#content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.panel {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    display: none;
+}
+
+.checkbox-inline {
+    margin-left: 5px;
+    font-size: 16px;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 3px 5px;
+    border-radius: 3px;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    padding: 5px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#calculator button {
+    width: 100px;
+    height: 60px;
+    font-size: 18px;
+}
+
+#equationSolver button {
+    background-color: #008CBA;
+    color: white;
+}
+
+    #equationSolver button:hover {
+        background-color: #0077A3;
+    }
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
