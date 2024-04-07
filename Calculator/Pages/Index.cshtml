@@ -15,6 +15,7 @@
     <button onclick="toggleTab('equationSolver')">Equation Solver</button>
     <button onclick="toggleTab('unitConverter')">Unit Converter</button>
     <button onclick="toggleTab('matrixCalculator')">Matrix Calculator</button>
+    <button onclick="toggleTab('programmingMode')">Programming Mode</button>
 </div>
 
 
@@ -145,9 +146,91 @@
         <div id="matrixResult"></div>
     </div>
 
+
+
+
+    <div id="programmingMode">
+        <button onclick="showConversionInterface()">Conversion Interface</button>
+        <button onclick="showOperationInterface()">Operation Interface</button>
+
+        <div id="conversionInterface" style="display: none;">
+            <div>
+                <label for="inputValue">Input Value:</label>
+                <input type="text" id="inputValue">
+            </div>
+            <div>
+                <label for="inputFormat">Input Format:</label>
+                <select id="inputFormat">
+                    <option value="decimal">Decimal</option>
+                    <option value="binary">Binary</option>
+                    <option value="octal">Octal</option>
+                    <option value="hexadecimal">Hexadecimal</option>
+                </select>
+            </div>
+            <button onclick="convertAndDisplay()">Convert & Display</button>
+            <br><br>
+            <div>
+                <label for="decimalResult">Decimal:</label>
+                <input type="text" id="decimalResult" readonly>
+            </div>
+            <div>
+                <label for="binaryResult">Binary:</label>
+                <input type="text" id="binaryResult" readonly>
+            </div>
+            <div>
+                <label for="octalResult">Octal:</label>
+                <input type="text" id="octalResult" readonly>
+            </div>
+            <div>
+                <label for="hexadecimalResult">Hexadecimal:</label>
+                <input type="text" id="hexadecimalResult" readonly>
+            </div>
+        </div>
+
+        <div id="operationInterface" style="display: none;">
+            <div>
+                <label for="inputValue">Input Value:</label>
+                <input type="text" id="inputValue">
+            </div>
+            <div>
+                <label for="inputFormat">Input Format:</label>
+                <select id="inputFormat">
+                    <option value="decimal">Decimal</option>
+                    <option value="binary">Binary</option>
+                    <option value="octal">Octal</option>
+                    <option value="hexadecimal">Hexadecimal</option>
+                </select>
+            </div>
+            <div>
+                <label for="inputValue2">Second Value:</label>
+                <input type="text" id="inputValue2">
+            </div>
+            <div>
+                <label for="operation">Operation:</label>
+                <select id="operation">
+                    <option value="and">AND</option>
+                    <option value="or">OR</option>
+                    <option value="xor">XOR</option>
+                    <option value="not">NOT</option>
+                </select>
+            </div>
+            <button onclick="performOperation()">Perform Task</button>
+            <br><br>
+            <div>
+                <label for="inputValue">Input Value:</label>
+                <input type="text" id="inputValue">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 </div>
 
 @section Scripts {
+    <script src="~/js/Programming.js"></script>
     <script src="~/js/Converter.js"></script>
     <script src="~/js/MatrixCalc.js"></script>
     <script src="~/js/Calculator.js"></script>
