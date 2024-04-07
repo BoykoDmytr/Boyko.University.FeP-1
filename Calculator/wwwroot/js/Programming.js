@@ -37,3 +37,49 @@ function convertAndDisplay() {
     document.getElementById("octalResult").value = octalResult;
     document.getElementById("hexadecimalResult").value = hexadecimalResult;
 }
+
+function performOperation() {
+    var inputValue = document.getElementById("inputValue").value;
+    var inputValue2 = document.getElementById("inputValue2").value;
+    var inputFormat = document.getElementById("inputFormat").value;
+    var operation = document.getElementById("operation").value;
+
+    var value1, value2;
+
+    switch (inputFormat) {
+        case "decimal":
+            value1 = parseInt(inputValue);
+            value2 = parseInt(inputValue2);
+            break;
+        case "binary":
+            value1 = parseInt(inputValue, 2);
+            value2 = parseInt(inputValue2, 2);
+            break;
+        case "octal":
+            value1 = parseInt(inputValue, 8);
+            value2 = parseInt(inputValue2, 8);
+            break;
+        case "hexadecimal":
+            value1 = parseInt(inputValue, 16);
+            value2 = parseInt(inputValue2, 16);
+            break;
+    }
+
+    var result;
+    switch (operation) {
+        case "and":
+            result = value1 & value2;
+            break;
+        case "or":
+            result = value1 | value2;
+            break;
+        case "xor":
+            result = value1 ^ value2;
+            break;
+        case "not":
+            result = ~value1;
+            break;
+    }
+
+    document.getElementById("outputValue").value = result.toString(2);
+}
