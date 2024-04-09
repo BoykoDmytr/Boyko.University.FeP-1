@@ -7,6 +7,7 @@ https://t.me/DEMONWASD
 
 # Getting Started
 https://universal-calculator.azurewebsites.net/
+
 Press the project start button labeled "http" or in the "PowerShell for Developers" console, execute the command "dotnet run".
 # Project Documentation
 ## Week 1
