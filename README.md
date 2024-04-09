@@ -170,7 +170,7 @@ Users must ensure proper formatting of matrices for accurate calculations.
 
 ## Week 2
 - Implement feature: Scientific Mode ✔
-  - Configure Continuous Integration/Continuous Delivery 🕒
+  - Configure Continuous Integration/Continuous Delivery ✔
   - Integrate graph plotting functionality with mathematical calculations ✔
   - Develop core structure and architecture of the calculator application ✔
   - Research and select appropriate libraries or frameworks for mathematical calculations ✔
