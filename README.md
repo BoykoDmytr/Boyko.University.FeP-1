@@ -173,7 +173,7 @@ Programming Mode
 4. Decimal: Read-only input field to display the decimal value.
 5. Binary: Read-only input field to display the binary value.
 6. Octal: Read-only input field to display the octal value.
-7. **Hexadecimal:** Read-only input field to display the hexadecimal value.
+7. Hexadecimal: Read-only input field to display the hexadecimal value.
 
 - Usage:
 
@@ -191,9 +191,9 @@ For Logical and Bitwise Operations:
 
 - Notes:
 
-- Input value can be provided in decimal, binary, octal, or hexadecimal format.
-- Converted values will be displayed simultaneously in all numeral systems.
-- For binary, octal, and hexadecimal formats, the corresponding decimal value will also be displayed as input.
+Input value can be provided in decimal, binary, octal, or hexadecimal format.
+Converted values will be displayed simultaneously in all numeral systems.
+For binary, octal, and hexadecimal formats, the corresponding decimal value will also be displayed as input.
 
 # Project Task Decomposition
 - Develop user interface components for graph plotting
@@ -201,6 +201,7 @@ For Logical and Bitwise Operations:
 - Develop algorithms for solving linear and quadratic equations
 - Develop conversion algorithms for various units of measurement
 - Develop algorithms for matrix operations such as addition, subtraction, and multiplication
+- Develop bitwise operations and logical operators for programming mode
 
 
 ## Week 1
@@ -237,4 +238,11 @@ For Logical and Bitwise Operations:
   - Design user interface elements for matrix input and display ✔
   - Implement determinant calculation and inverse calculation functions ✔
   - Test matrix calculator functionalities with different matrix sizes and values ✔
- 
+
+## Week 6:
+- Implement feature: Programming Mode ✔
+  - Develop bitwise operations and logical operators for programming mode ✔
+  - Design user interface for binary, octal, and hexadecimal conversions ✔
+  - Integrate programming mode with other calculator functionalities 🕒
+  - Test programming mode functionalities with various input values ✔
+
