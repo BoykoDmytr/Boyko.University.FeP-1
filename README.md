@@ -239,7 +239,7 @@ For binary, octal, and hexadecimal formats, the corresponding decimal value will
   - Implement determinant calculation and inverse calculation functions ✔
   - Test matrix calculator functionalities with different matrix sizes and values ✔
 
-## Week 6:
+## Week 6
 - Implement feature: Programming Mode ✔
   - Develop bitwise operations and logical operators for programming mode ✔
   - Design user interface for binary, octal, and hexadecimal conversions ✔
