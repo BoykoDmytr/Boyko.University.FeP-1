@@ -6,6 +6,8 @@ dimabojko501@gmail.com
 https://t.me/DEMONWASD
 
 # Getting Started
+https://universal-calculator.azurewebsites.net/
+
 Press the project start button labeled "http" or in the "PowerShell for Developers" console, execute the command "dotnet run".
 # Project Documentation
 ## Week 1
@@ -153,12 +155,53 @@ The determinant is displayed rounded to four decimal places.
 If any errors occur during calculations, such as invalid inputs or non-square matrices, corresponding error messages will be displayed.
 Users must ensure proper formatting of matrices for accurate calculations.
 
+
+## Week 6
+Programming Mode
+
+- Basic Operations:
+
+1. Conversion of input value between different numeral systems (decimal, binary, octal, hexadecimal).
+2. Displaying converted values in all numeral systems simultaneously.
+3. Performing logical and bitwise operations (AND, OR, NOT, XOR).
+
+- Interface:
+
+1. Input Value: Text input field where numerical values can be entered.
+2. Input Format: Dropdown menu to select the format of the input value (decimal, binary, octal, hexadecimal).
+3. Convert and Display Button: Button to initiate conversion and display of values.
+4. Decimal: Read-only input field to display the decimal value.
+5. Binary: Read-only input field to display the binary value.
+6. Octal: Read-only input field to display the octal value.
+7. Hexadecimal: Read-only input field to display the hexadecimal value.
+
+- Usage:
+
+For the Converter:
+1. Enter the numerical value in the "Input Value" field.
+2. Select the input format from the dropdown menu "Input Format".
+3. Press the "Convert and Display" button to convert the entered value into all other numeral systems and display them.
+
+For Logical and Bitwise Operations:
+1. Enter the numerical value in the "First Value" field.
+2. Select the format you want to use.
+3. Enter the numerical value in the "Second Value" field.
+4. Select the logical operator.
+5. Press the "Perform Task" button.
+
+- Notes:
+
+Input value can be provided in decimal, binary, octal, or hexadecimal format.
+Converted values will be displayed simultaneously in all numeral systems.
+For binary, octal, and hexadecimal formats, the corresponding decimal value will also be displayed as input.
+
 # Project Task Decomposition
 - Develop user interface components for graph plotting
 - Develop core structure and architecture of the calculator application
 - Develop algorithms for solving linear and quadratic equations
 - Develop conversion algorithms for various units of measurement
 - Develop algorithms for matrix operations such as addition, subtraction, and multiplication
+- Develop bitwise operations and logical operators for programming mode
 
 
 ## Week 1
@@ -195,4 +238,11 @@ Users must ensure proper formatting of matrices for accurate calculations.
   - Design user interface elements for matrix input and display ✔
   - Implement determinant calculation and inverse calculation functions ✔
   - Test matrix calculator functionalities with different matrix sizes and values ✔
- 
+
+## Week 6
+- Implement feature: Programming Mode ✔
+  - Develop bitwise operations and logical operators for programming mode ✔
+  - Design user interface for binary, octal, and hexadecimal conversions ✔
+  - Integrate programming mode with other calculator functionalities 🕒
+  - Test programming mode functionalities with various input values ✔
+
