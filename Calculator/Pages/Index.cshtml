@@ -16,8 +16,8 @@
     <button onclick="toggleTab('unitConverter')">Unit Converter</button>
     <button onclick="toggleTab('matrixCalculator')">Matrix Calculator</button>
     <button onclick="toggleTab('programmingMode')">Programming Mode</button>
+    <button onclick="toggleTab('statisticalFunctions')">Statistical Functions</button>
 </div>
-
 
 
 <div id="content">
@@ -223,10 +223,26 @@
         </div>
     </div>
 
+
+    <div id="statisticalFunctions" style="display: none;">
+        <div>
+            <label for="datasetInput">Enter Dataset:</label>
+            <textarea id="datasetInput" rows="3" cols="30"></textarea>
+        </div>
+        <button onclick="calculateMean()">Calculate Mean</button>
+        <button onclick="calculateMedian()">Calculate Median</button>
+        <button onclick="calculateMode()">Calculate Mode</button>
+        <button onclick="calculateStandardDeviation()">Calculate Standard Deviation</button>
+        <button onclick="calculateVariance()">Calculate Variance</button>
+        <div id="statisticalResult"></div>
+    </div>
+
+
 </div>
 
 @section Scripts {
     <script src="~/js/OutputTabs.js"></script>
+    <script src="~/js/StatisticalFunctions.js"></script>
     <script src="~/js/Programming.js"></script>
     <script src="~/js/Converter.js"></script>
     <script src="~/js/MatrixCalc.js"></script>
