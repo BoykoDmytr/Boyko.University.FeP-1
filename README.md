@@ -196,6 +196,49 @@ Input value can be provided in decimal, binary, octal, or hexadecimal format.
 Converted values will be displayed simultaneously in all numeral systems.
 For binary, octal, and hexadecimal formats, the corresponding decimal value will also be displayed as input.
 
+
+## Week 7
+Statistical Functions
+
+- Basic Operations:
+  
+1. Calculate Mean:
+   - Description: Computes the arithmetic mean of a dataset, which is the sum of all values divided by the number of values.
+   - Function: `calculateMean()`
+
+2. Calculate Median:
+   - Description: Determines the median value of a dataset, which is the middle value when the data is sorted in ascending order. If the number of values is even, it calculates the average of the two middle values.
+   - Function: `calculateMedian()`
+
+3. Calculate Mode:
+   - Description: Identifies the mode(s) of a dataset, which is the value(s) that appear most frequently.
+   - Function: `calculateMode()`
+
+4. Calculate Standard Deviation:
+   - Description: Computes the standard deviation of a dataset, which measures the dispersion of values from the mean. Higher values indicate greater dispersion.
+   - Function: `calculateStandardDeviation()`
+
+5. Calculate Variance:
+   - Description: Determines the variance of a dataset, which is the square of the standard deviation. It measures the average squared deviation from the mean.
+   - Function: `calculateVariance()`
+
+- Interface:
+  
+  - Input: Users can input datasets as a list of numbers separated by commas or spaces in a text area provided.
+  - Output: The calculated statistical measures are displayed below the input area.
+
+Usage:
+
+  1. Click on the "Statistical Functions" button to navigate to the statistical functions tab.
+  2. Enter the dataset in the provided text area.
+  3. Click on the respective buttons to calculate mean, median, mode, standard deviation, or variance.
+  4. View the results displayed below the input area.
+
+Notes:
+
+  - Ensure to input numerical values separated by commas or spaces for accurate calculations.
+  - These functions provide essential statistical insights into the dataset, aiding in data analysis and understanding patterns.
+
 # Project Task Decomposition
 - Develop user interface components for graph plotting
 - Develop core structure and architecture of the calculator application
@@ -203,6 +246,7 @@ For binary, octal, and hexadecimal formats, the corresponding decimal value will
 - Develop conversion algorithms for various units of measurement
 - Develop algorithms for matrix operations such as addition, subtraction, and multiplication
 - Develop bitwise operations and logical operators for programming mode
+- Develop algorithms for calculating mean, median, mode, standard deviation, and variance
 
 
 ## Week 1
@@ -246,4 +290,11 @@ For binary, octal, and hexadecimal formats, the corresponding decimal value will
   - Design user interface for binary, octal, and hexadecimal conversions ✔
   - Integrate programming mode with other calculator functionalities 🕒
   - Test programming mode functionalities with various input values ✔
+
+## Week 7:
+- Implement feature: Statistical Functions ✔
+  - Develop algorithms for calculating mean, median, mode, standard deviation, and variance ✔
+  - Create user interface components for inputting datasets and displaying statistical measures ✔
+  - Integrate statistical functions with other calculator features 🕒
+  - Test statistical functions with different datasets to ensure accuracy ✔
 
