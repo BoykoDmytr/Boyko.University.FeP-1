@@ -168,13 +168,13 @@ Programming Mode
 
 - Interface:
 
-1. Input Value: Text input field where numerical values can be entered.
-2. Input Format: Dropdown menu to select the format of the input value (decimal, binary, octal, hexadecimal).
-3. Convert and Display Button: Button to initiate conversion and display of values.
-4. Decimal: Read-only input field to display the decimal value.
-5. Binary: Read-only input field to display the binary value.
-6. Octal: Read-only input field to display the octal value.
-7. Hexadecimal: Read-only input field to display the hexadecimal value.
+  1. Input Value: Text input field where numerical values can be entered.
+  2. Input Format: Dropdown menu to select the format of the input value (decimal, binary, octal, hexadecimal).
+  3. Convert and Display Button: Button to initiate conversion and display of values.
+  4. Decimal: Read-only input field to display the decimal value.
+  5. Binary: Read-only input field to display the binary value.
+  6. Octal: Read-only input field to display the octal value.
+  7. Hexadecimal: Read-only input field to display the hexadecimal value.
 
 - Usage:
 
