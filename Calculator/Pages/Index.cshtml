@@ -17,6 +17,7 @@
     <button onclick="toggleTab('matrixCalculator')">Matrix Calculator</button>
     <button onclick="toggleTab('programmingMode')">Programming Mode</button>
     <button onclick="toggleTab('statisticalFunctions')">Statistical Functions</button>
+    <button onclick="toggleTab('complexCalculator')">Сomplex Calculator</button>
 </div>
 
 
@@ -237,11 +238,31 @@
         <div id="statisticalResult"></div>
     </div>
 
+    <div id="complexCalculator" style="display: none;">
+        <label for="realPart1">Real Part 1:</label>
+        <input type="number" id="realPart1" />
+        <label for="imaginaryPart1">Imaginary Part 1:</label>
+        <input type="number" id="imaginaryPart1" />
+        <br>
+        <label for="realPart2">Real Part 2:</label>
+        <input type="number" id="realPart2" />
+        <label for="imaginaryPart2">Imaginary Part 2:</label>
+        <input type="number" id="imaginaryPart2" />
+        <br>
+        <button onclick="addComplexNumbers()">Add</button>
+        <button onclick="subtractComplexNumbers()">Subtract</button>
+        <button onclick="multiplyComplexNumbers()">Multiply</button>
+        <button onclick="divideComplexNumbers()">Divide</button>
+        <div id="complexResult"></div>
+    </div>
+
+
 
 </div>
 
 @section Scripts {
     <script src="~/js/OutputTabs.js"></script>
+    <script src="~/js/Complex.js"></script>
     <script src="~/js/StatisticalFunctions.js"></script>
     <script src="~/js/Programming.js"></script>
     <script src="~/js/Converter.js"></script>
