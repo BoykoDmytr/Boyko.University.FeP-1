@@ -239,6 +239,39 @@ Notes
   - Ensure to input numerical values separated by commas or spaces for accurate calculations.
   - These functions provide essential statistical insights into the dataset, aiding in data analysis and understanding patterns.
 
+
+## Week 8
+- Complex Number Support
+
+Basic Operations:
+
+1. Addition: Adds two complex numbers.
+2. Subtraction: Subtracts one complex number from another.
+3. Multiplication: Multiplies two complex numbers.
+4. Division: Divides one complex number by another.
+
+Interface:
+
+- Real Part 1: Input field for the real part of the first complex number.
+- Imaginary Part 1: Input field for the imaginary part of the first complex number.
+- Real Part 2: Input field for the real part of the second complex number.
+- Imaginary Part 2: Input field for the imaginary part of the second complex number.
+- Buttons: Buttons to perform basic operations (addition, subtraction, multiplication, division).
+- Result: Display area to show the result of the operation.
+
+Usage:
+
+1. Enter the real and imaginary parts of the first complex number in the corresponding input fields.
+2. Enter the real and imaginary parts of the second complex number in the corresponding input fields.
+3. Click on the button corresponding to the desired operation (addition, subtraction, multiplication, division).
+4. The result will be displayed in the result area.
+
+Notes:
+
+- Ensure all input fields are filled before performing an operation.
+- Results are displayed in the format "Result: realPart + imaginaryParti", where "i" represents the imaginary unit.
+- Verify the correctness of results with known examples to ensure accuracy.
+
 # Project Task Decomposition
 - Develop user interface components for graph plotting
 - Develop core structure and architecture of the calculator application
@@ -247,6 +280,7 @@ Notes
 - Develop algorithms for matrix operations such as addition, subtraction, and multiplication
 - Develop bitwise operations and logical operators for programming mode
 - Develop algorithms for calculating mean, median, mode, standard deviation, and variance
+- Develop arithmetic operations for complex numbers
 
 
 ## Week 1
@@ -297,4 +331,12 @@ Notes
   - Create user interface components for inputting datasets and displaying statistical measures ✔
   - Integrate statistical functions with other calculator features 🕒
   - Test statistical functions with different datasets to ensure accuracy ✔
+
+## Week 8
+- Implement feature: Complex Number Support ✔
+  - Develop arithmetic operations for complex numbers ✔
+  - Design user interface for inputting and displaying complex numbers in rectangular and polar forms ✔
+  - Integrate complex number support with other calculator functionalities 🕒
+  - Test complex number operations with various complex numbers ✔
+
 
