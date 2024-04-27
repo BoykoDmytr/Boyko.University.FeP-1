@@ -18,6 +18,7 @@
     <button onclick="toggleTab('programmingMode')">Programming Mode</button>
     <button onclick="toggleTab('statisticalFunctions')">Statistical Functions</button>
     <button onclick="toggleTab('complexCalculator')">Сomplex Calculator</button>
+    <button onclick="toggleTab('customFunctions')">Сustom Functions</button>
 </div>
 
 
@@ -256,12 +257,31 @@
         <div id="complexResult"></div>
     </div>
 
+    <div id="customFunctions" style="display: none;">
+        <h3>Custom Functions</h3>
+        <label for="customFunctionName">Function Name:</label>
+        <input type="text" id="customFunctionName">
+        <label for="customFunctionExpression">Function Expression:</label>
+        <input type="text" id="customFunctionExpression">
+        <button onclick="addCustomFunction()">Add Function</button>
+        <h4>Custom Constants</h4>
+        <label for="customConstantName">Constant Name:</label>
+        <input type="text" id="customConstantName">
+        <label for="customConstantValue">Constant Value:</label>
+        <input type="text" id="customConstantValue">
+        <button onclick="addCustomConstant()">Add Constant</button>
+        <h4>Manage Custom Functions and Constants</h4>
+        <ul id="customFunctionsList"></ul>
+        <ul id="customConstantsList"></ul>
+    </div>
+
 
 
 </div>
 
 @section Scripts {
     <script src="~/js/OutputTabs.js"></script>
+    <script src="~/js/CustomFunc.js"></script>
     <script src="~/js/Complex.js"></script>
     <script src="~/js/StatisticalFunctions.js"></script>
     <script src="~/js/Programming.js"></script>
