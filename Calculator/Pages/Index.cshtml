@@ -271,8 +271,20 @@
         <input type="text" id="customConstantValue">
         <button onclick="addCustomConstant()">Add Constant</button>
         <h4>Manage Custom Functions and Constants</h4>
-        <ul id="customFunctionsList"></ul>
-        <ul id="customConstantsList"></ul>
+        <div>
+            <button onclick="clearCustomFunctionsAndConstants()">Clear All Functions and Constants</button>
+            <button onclick="removeLastCustomFunction()">Remove Last Custom Function</button>
+            <button onclick="removeLastCustomConstant()">Remove Last Custom Constant</button>
+        </div>
+        <div>
+            <h3>Custom Functions List</h3>
+            <ul id="customFunctionsList"></ul>
+        </div>
+        <div>
+            <h3>Custom Constants List</h3>
+            <ul id="customConstantsList"></ul>
+        </div>
+
     </div>
 
 
