@@ -56,20 +56,20 @@ Math Expression Plot: Enter a mathematical expression, and the tool plots the co
 Customizable Graphs: Supports expressions with variables like 'x' and 'y'.
 Visualization Range: Graphs are displayed within a specified range on both the X and Y axes.
    
-Interface
+Interface:
    
 User-Friendly Input: Enter mathematical expressions easily through a dedicated input field.
 Keypad for Convenience: Use a keypad with numerical keys and function keys for efficient input.
 Responsive Design: The application is designed for usability on various devices.
 
-Usage
+Usage:
    
 Calculator Mode: Select the calculator tab, enter an expression, and press the '=' button to calculate the result. 
 The answer is displayed below the input field.
 Graph Plotting Mode: Switch to the graph plotting tab, enter a math expression with 'x' or 'y', and click the "Plot Graph" button. 
 The graph will be displayed in the designated area.
 
-Notes
+Notes:
    
 The calculator uses the math.js library for mathematical evaluations.
 
@@ -79,18 +79,18 @@ The calculator uses the math.js library for mathematical evaluations.
 
 Basic Operations: Solves linear and quadratic equations. Provides step-by-step explanations of the solution process.
 
-Interface
+Interface:
 
 Convenient Input: Easily input mathematical expressions through dedicated input fields.
 Keypad for Convenience: Utilize a keypad featuring numerical and functional keys for efficient input.
 Responsive Design: The application is designed to be used across various devices.
 
-Usage
+Usage:
 
 Equation Solver Mode: Select the equation solver tab, choose whether to solve a linear or quadratic equation 
 by selecting the appropriate checkbox. Press the "Solve Equation" button to compute the result.
 
-Notes
+Notes:
 
 The Equation Solver utilizes the math.js library for mathematical computations.
 
@@ -100,13 +100,13 @@ The Equation Solver utilizes the math.js library for mathematical computations.
 
 Basic Operations: Converts units of measurement such as Length, Weight, Area, Time, and Volume.
 
-Interface
+Interface:
 
 Convenient Input: Easily input measurement unit data using special input fields. Keyboard for convenience:
 Use a keyboard with numerical and functional keys for efficient input. Adaptive Design: The application
 is designed for use on various devices.
 
-Usage
+Usage:
 
 Open the converter: Find the element or link on the website to open the unit converter.
 
@@ -116,7 +116,7 @@ Open the converter: Find the element or link on the website to open the unit con
   4. Convert: Press the "Convert" button to get the conversion result.
   5. Get result: After pressing the "Convert" button, you will see the conversion result displayed next to the entered value.
 
-Notes
+Notes:
 
 Nothing
 
@@ -200,7 +200,7 @@ For binary, octal, and hexadecimal formats, the corresponding decimal value will
 ## Week 7
 - Statistical Functions
 
-Basic Operations
+Basic Operations:
   
 1. Calculate Mean:
    - Description: Computes the arithmetic mean of a dataset, which is the sum of all values divided by the number of values.
@@ -222,19 +222,19 @@ Basic Operations
    - Description: Determines the variance of a dataset, which is the square of the standard deviation. It measures the average squared deviation from the mean.
    - Function: `calculateVariance()`
 
-Interface
+Interface:
   
   - Input: Users can input datasets as a list of numbers separated by commas or spaces in a text area provided.
   - Output: The calculated statistical measures are displayed below the input area.
 
-Usage
+Usage:
 
   1. Click on the "Statistical Functions" button to navigate to the statistical functions tab.
   2. Enter the dataset in the provided text area.
   3. Click on the respective buttons to calculate mean, median, mode, standard deviation, or variance.
   4. View the results displayed below the input area.
 
-Notes
+Notes:
 
   - Ensure to input numerical values separated by commas or spaces for accurate calculations.
   - These functions provide essential statistical insights into the dataset, aiding in data analysis and understanding patterns.
@@ -261,16 +261,40 @@ Interface:
 
 Usage:
 
-1. Enter the real and imaginary parts of the first complex number in the corresponding input fields.
-2. Enter the real and imaginary parts of the second complex number in the corresponding input fields.
-3. Click on the button corresponding to the desired operation (addition, subtraction, multiplication, division).
-4. The result will be displayed in the result area.
+  1. Enter the real and imaginary parts of the first complex number in the corresponding input fields.
+  2. Enter the real and imaginary parts of the second complex number in the corresponding input fields.
+  3. Click on the button corresponding to the desired operation (addition, subtraction, multiplication, division).
+  4. The result will be displayed in the result area.
 
 Notes:
 
-- Ensure all input fields are filled before performing an operation.
-- Results are displayed in the format "Result: realPart + imaginaryParti", where "i" represents the imaginary unit.
-- Verify the correctness of results with known examples to ensure accuracy.
+  - Ensure all input fields are filled before performing an operation.
+  - Results are displayed in the format "Result: realPart + imaginaryParti", where "i" represents the imaginary unit.
+  - Verify the correctness of results with known examples to ensure accuracy.
+
+## Week 9
+- Custom Functions
+
+Basic Operations:
+
+Adding custom functions for further use in the calculator.
+Ability to use standard mathematical operations such as addition, subtraction, multiplication, and division, as well as trigonometric functions, logarithms, etc.
+
+Interface:
+  Add Custom Function:
+    - Fields to enter the function name and its expression.
+    - "Add Function" button to save the function.
+    - Remove Last Custom Function:
+    - "Remove Last Custom Function" button to delete the last added custom function.
+
+Usage:
+  Enter the name and expression for the new custom function in the respective fields.
+  Click the "Add Function" button to save the function for future use.
+  If needed, remove the last added function by clicking the "Remove Last Custom Function" button.
+
+Notes:
+  - Double-check the correctness of the custom function name and expression before saving.
+  - Custom functions can be used in conjunction with standard calculator operations.
 
 # Project Task Decomposition
 - Develop user interface components for graph plotting
@@ -281,6 +305,7 @@ Notes:
 - Develop bitwise operations and logical operators for programming mode
 - Develop algorithms for calculating mean, median, mode, standard deviation, and variance
 - Develop arithmetic operations for complex numbers
+- Develop functionality for users to define and save custom functions or constants
 
 
 ## Week 1
@@ -338,5 +363,12 @@ Notes:
   - Design user interface for inputting and displaying complex numbers in rectangular and polar forms ✔
   - Integrate complex number support with other calculator functionalities 🕒
   - Test complex number operations with various complex numbers ✔
+
+## Week 9
+- Implement feature: Custom Functions ✔
+  - Develop functionality for users to define and save custom functions or constants ✔
+  - Design user interface for managing custom functions and constants ✔
+  - Integrate custom functions feature with other calculator functionalities 🕒
+  - Test custom functions with different user-defined functions and constants ✔
 
 
