@@ -281,6 +281,7 @@ Adding custom functions for further use in the calculator.
 Ability to use standard mathematical operations such as addition, subtraction, multiplication, and division, as well as trigonometric functions, logarithms, etc.
 
 Interface:
+
   Add Custom Function:
     - Fields to enter the function name and its expression.
     - "Add Function" button to save the function.
@@ -288,11 +289,13 @@ Interface:
     - "Remove Last Custom Function" button to delete the last added custom function.
 
 Usage:
+
   Enter the name and expression for the new custom function in the respective fields.
   Click the "Add Function" button to save the function for future use.
   If needed, remove the last added function by clicking the "Remove Last Custom Function" button.
 
 Notes:
+
   - Double-check the correctness of the custom function name and expression before saving.
   - Custom functions can be used in conjunction with standard calculator operations.
 
