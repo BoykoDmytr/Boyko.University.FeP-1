@@ -49,7 +49,6 @@ function updateCustomConstantsList() {
     });
 }
 
-// Функція для видалення всіх кастомних функцій та констант
 function clearCustomFunctionsAndConstants() {
     customFunctions = [];
     customConstants = [];
@@ -57,13 +56,11 @@ function clearCustomFunctionsAndConstants() {
     updateCustomConstantsList();
 }
 
-// Функція для видалення останньої доданої кастомної функції
 function removeLastCustomFunction() {
     customFunctions.pop();
     updateCustomFunctionsList();
 }
 
-// Функція для видалення останньої доданої кастомної константи
 function removeLastCustomConstant() {
     customConstants.pop();
     updateCustomConstantsList();
