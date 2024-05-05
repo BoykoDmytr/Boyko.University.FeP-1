@@ -152,7 +152,7 @@ function exportHistory() {
 
 function displayHistoryOnPage() {
     var historyList = document.getElementById("historyList");
-    historyList.innerHTML = "";
+    historyList.innerHTML = ""; 
 
     historyLog.forEach(function (entry) {
         var listItem = document.createElement("li");
@@ -165,6 +165,8 @@ function displayHistoryOnPage() {
             displayText = entry.inputValue + " " + entry.inputUnit + " = " + entry.result + " " + entry.outputUnit;
         } else if (entry.a !== undefined && entry.b !== undefined && entry.c !== undefined && entry.solution !== undefined) {
             displayText = entry.isQuadratic ? entry.a + "x^2 + " + entry.b + "x + " + entry.c + " = " + entry.solution : entry.a + "x + " + entry.b + " = " + entry.solution;
+        } else if (entry.expression + " = " + entry.result) {
+            displayText = entry.expression + " = " + entry.result;
         } else {
             displayText = "Unknown entry format";
         }
@@ -173,7 +175,7 @@ function displayHistoryOnPage() {
     });
 
     var complexList = document.getElementById("complexList");
-    complexList.innerHTML = "";
+    complexList.innerHTML = ""; 
 
     Complex.forEach(function (entry) {
         var listItem = document.createElement("li");
