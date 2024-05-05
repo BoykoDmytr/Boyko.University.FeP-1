@@ -36,6 +36,8 @@ function convertAndDisplay() {
     document.getElementById("binaryResult").value = binaryResult;
     document.getElementById("octalResult").value = octalResult;
     document.getElementById("hexadecimalResult").value = hexadecimalResult;
+
+    addToHistoryConversion(inputValue, inputFormat, decimalValue, binaryResult, octalResult, hexadecimalResult);
 }
 
 function performOperation() {
@@ -82,4 +84,5 @@ function performOperation() {
     }
 
     document.getElementById("outputValue").value = result.toString(2);
+    addToHistory(inputValue + " " + operation + " " + inputValue2, result);
 }

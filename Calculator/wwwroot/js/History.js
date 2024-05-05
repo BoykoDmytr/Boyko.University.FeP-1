@@ -1,8 +1,5 @@
-﻿// Масив для зберігання історії логу
-var historyLog = [];
-var matrixHistoryLog = [];
+﻿var historyLog = [];
 
-// Функція додавання до історії логу
 function addToHistory(expression, result) {
     var logEntry = {
         expression: expression,
@@ -21,18 +18,21 @@ function addToHistoryMatrix(operationType, matrixA, matrixB, result) {
     historyLog.push(logEntry);
 }
 
-function addToHistoryEquation(equation) {
+function addToHistoryConversion(inputValue, inputFormat, decimalValue, binaryResult, octalResult, hexadecimalResult) {
     let logEntry = {
-        Equation: equation,
-        result: result
+        inputValue: inputValue,
+        inputFormat: inputFormat,
+        decimalValue: decimalValue,
+        binaryResult: binaryResult,
+        octalResult: octalResult,
+        hexadecimalResult: hexadecimalResult
     };
     historyLog.push(logEntry);
 }
 
-// Функція відображення історії логу
 function displayHistory() {
     var historyList = document.getElementById("historyList");
-    historyList.innerHTML = ""; // Очищаємо список перед відображенням
+    historyList.innerHTML = ""; 
 
     historyLog.forEach(function (entry) {
         var listItem = document.createElement("li");
@@ -41,33 +41,32 @@ function displayHistory() {
     });
 }
 
-// Функція очищення історії логу
+
 function clearHistory() {
     historyLog = [];
-    displayHistory(); // Оновлення відображення
+    displayHistory(); 
 }
 
 
-// Функція експорту історії логу у форматі JSON
 function exportHistory() {
-    var jsonData = JSON.stringify(historyLog); // Перетворюємо масив у JSON-рядок
-    var filename = "history_log.json";
+    var allHistory = {
+        historyLog: historyLog
+    };
 
-    // Створюємо об'єкт URL для скачування JSON-файлу
+    var jsonData = JSON.stringify(allHistory);
+    var filename = "combined_history_log.json";
+
     var blob = new Blob([jsonData], { type: "application/json" });
+
     var url = URL.createObjectURL(blob);
 
-    // Створюємо посилання для скачування файлу
     var a = document.createElement("a");
     a.href = url;
     a.download = filename;
 
-    // Додаємо посилання на сторінку і автоматично клікаємо на нього для початку завантаження файлу
     document.body.appendChild(a);
     a.click();
 
-    // Видаляємо створений елемент посилання після завантаження файлу
     document.body.removeChild(a);
-    // Звільняємо ресурси, щоб уникнути витоку пам'яті
     URL.revokeObjectURL(url);
 }
