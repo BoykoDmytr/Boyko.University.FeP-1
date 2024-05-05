@@ -1,4 +1,5 @@
 ﻿var historyLog = [];
+var Complex = [];
 
 function addToHistory(expression, result) {
     var logEntry = {
@@ -60,7 +61,7 @@ function addToComplexADDLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2
         resultReal: resultReal,
         resultImaginary: resultImaginary
     };
-    historyLog.push(logEntry);
+    Complex.push(logEntry);
 }
 
 function addToComplexSubstractLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2, resultReal, resultImaginary) {
@@ -72,7 +73,7 @@ function addToComplexSubstractLog(realPart1, imaginaryPart1, realPart2, imaginar
         resultReal: resultReal,
         resultImaginary: resultImaginary
     };
-    historyLog.push(logEntry);
+    Complex.push(logEntry);
 }
 function addToComplexMultiplyLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2, resultReal, resultImaginary) {
     var logEntry = {
@@ -83,7 +84,7 @@ function addToComplexMultiplyLog(realPart1, imaginaryPart1, realPart2, imaginary
         resultReal: resultReal,
         resultImaginary: resultImaginary
     };
-    historyLog.push(logEntry);
+    Complex.push(logEntry);
 }
 function addToComplexDivideLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2, resultReal, resultImaginary) {
     var logEntry = {
@@ -94,7 +95,7 @@ function addToComplexDivideLog(realPart1, imaginaryPart1, realPart2, imaginaryPa
         resultReal: resultReal,
         resultImaginary: resultImaginary
     };
-    historyLog.push(logEntry);
+    Complex.push(logEntry);
 }
 
 
@@ -118,7 +119,8 @@ function clearHistory() {
 
 function exportHistory() {
     var allHistory = {
-        historyLog: historyLog
+        historyLog: historyLog,
+        Complex: Complex
     };
 
     var jsonData = JSON.stringify(allHistory);
