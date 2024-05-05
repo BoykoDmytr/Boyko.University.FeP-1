@@ -51,6 +51,52 @@ function addToConversionLog(inputValue, inputUnit, outputUnit, result) {
     historyLog.push(logEntry);
 }
 
+function addToComplexADDLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2, resultReal, resultImaginary) {
+    var logEntry = {
+        inputRealValue1: realPart1,
+        inputimaginaryValue1: imaginaryPart1,
+        inputRealValue2: realPart2,
+        inputimaginaryValue2: imaginaryPart2,
+        resultReal: resultReal,
+        resultImaginary: resultImaginary
+    };
+    historyLog.push(logEntry);
+}
+
+function addToComplexSubstractLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2, resultReal, resultImaginary) {
+    var logEntry = {
+        inputRealValue1: realPart1,
+        inputimaginaryValue1: imaginaryPart1,
+        inputRealValue2: realPart2,
+        inputimaginaryValue2: imaginaryPart2,
+        resultReal: resultReal,
+        resultImaginary: resultImaginary
+    };
+    historyLog.push(logEntry);
+}
+function addToComplexMultiplyLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2, resultReal, resultImaginary) {
+    var logEntry = {
+        inputRealValue1: realPart1,
+        inputimaginaryValue1: imaginaryPart1,
+        inputRealValue2: realPart2,
+        inputimaginaryValue2: imaginaryPart2,
+        resultReal: resultReal,
+        resultImaginary: resultImaginary
+    };
+    historyLog.push(logEntry);
+}
+function addToComplexDivideLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2, resultReal, resultImaginary) {
+    var logEntry = {
+        inputRealValue1: realPart1,
+        inputimaginaryValue1: imaginaryPart1,
+        inputRealValue2: realPart2,
+        inputimaginaryValue2: imaginaryPart2,
+        resultReal: resultReal,
+        resultImaginary: resultImaginary
+    };
+    historyLog.push(logEntry);
+}
+
 
 function displayHistory() {
     var historyList = document.getElementById("historyList");
