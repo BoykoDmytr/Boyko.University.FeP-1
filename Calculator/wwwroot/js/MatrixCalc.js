@@ -1,3 +1,4 @@
+
 //Функції для матричного калькулятора
 function addMatrices(matrix1, matrix2) {
     if (matrix1.length !== matrix2.length || matrix1[0].length !== matrix2[0].length) {
@@ -177,6 +178,8 @@ function performMatrixOperation() {
     }
 
     displayMatrixResult(result);
+
+    addToHistoryMatrix(operationType, matrixA, matrixB, result);
 }
 
 function parseMatrix(matrixString) {

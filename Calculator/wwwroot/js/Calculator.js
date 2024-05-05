@@ -5,6 +5,7 @@ function calculate() {
     try {
         var result = math.evaluate(expression);
         document.getElementById('calculatorResult').textContent = "Result: " + result;
+        addToHistory(expression, result);
     } catch (error) {
         alert("Error evaluating the expression.");
     }

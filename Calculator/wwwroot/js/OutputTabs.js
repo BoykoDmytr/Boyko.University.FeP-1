@@ -9,7 +9,8 @@ function clearExpression() {
 }
 
 function toggleTab(tabName) {
-    var tabs = ['graph', 'calculator', 'equationSolver', 'unitConverter', 'matrixCalculator', 'programmingMode', 'statisticalFunctions', 'complexCalculator', 'customFunctions'];
+    var tabs = ['graph', 'calculator', 'equationSolver', 'unitConverter', 'matrixCalculator',
+        'programmingMode', 'statisticalFunctions', 'complexCalculator', 'customFunctions', 'historyTab'];
 
     for (var i = 0; i < tabs.length; i++) {
         var tab = document.getElementById(tabs[i]);

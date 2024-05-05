@@ -77,4 +77,5 @@ function plotGraph() {
     };
 
     Plotly.newPlot('plot', traces, layout);
+    addToHistory(expression);
 }
