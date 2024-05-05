@@ -7,6 +7,7 @@ function addToHistory(expression, result) {
         result: result
     };
     historyLog.push(logEntry);
+    displayHistoryOnPage();
 }
 
 function addToHistoryMatrix(operationType, matrixA, matrixB, result) {
@@ -17,6 +18,7 @@ function addToHistoryMatrix(operationType, matrixA, matrixB, result) {
         result: result
     };
     historyLog.push(logEntry);
+    displayHistoryOnPage();
 }
 
 function addToHistoryConversion(inputValue, inputFormat, decimalValue, binaryResult, octalResult, hexadecimalResult) {
@@ -29,6 +31,7 @@ function addToHistoryConversion(inputValue, inputFormat, decimalValue, binaryRes
         hexadecimalResult: hexadecimalResult
     };
     historyLog.push(logEntry);
+    displayHistoryOnPage();
 }
 
 function addToEquationLog(a, b, c, isQuadratic, solution) {
@@ -40,6 +43,7 @@ function addToEquationLog(a, b, c, isQuadratic, solution) {
         solution: solution
     };
     historyLog.push(logEntry);
+    displayHistoryOnPage();
 }
 
 function addToConversionLog(inputValue, inputUnit, outputUnit, result) {
@@ -50,6 +54,7 @@ function addToConversionLog(inputValue, inputUnit, outputUnit, result) {
         result: result
     };
     historyLog.push(logEntry);
+    displayHistoryOnPage();
 }
 
 function addToComplexADDLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2, resultReal, resultImaginary) {
@@ -62,6 +67,7 @@ function addToComplexADDLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2
         resultImaginary: resultImaginary
     };
     Complex.push(logEntry);
+    displayHistoryOnPage();
 }
 
 function addToComplexSubstractLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2, resultReal, resultImaginary) {
@@ -74,6 +80,7 @@ function addToComplexSubstractLog(realPart1, imaginaryPart1, realPart2, imaginar
         resultImaginary: resultImaginary
     };
     Complex.push(logEntry);
+    displayHistoryOnPage();
 }
 function addToComplexMultiplyLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2, resultReal, resultImaginary) {
     var logEntry = {
@@ -85,6 +92,7 @@ function addToComplexMultiplyLog(realPart1, imaginaryPart1, realPart2, imaginary
         resultImaginary: resultImaginary
     };
     Complex.push(logEntry);
+    displayHistoryOnPage();
 }
 function addToComplexDivideLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2, resultReal, resultImaginary) {
     var logEntry = {
@@ -96,6 +104,7 @@ function addToComplexDivideLog(realPart1, imaginaryPart1, realPart2, imaginaryPa
         resultImaginary: resultImaginary
     };
     Complex.push(logEntry);
+    displayHistoryOnPage();
 }
 
 
@@ -139,4 +148,37 @@ function exportHistory() {
 
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+}
+
+function displayHistoryOnPage() {
+    var historyList = document.getElementById("historyList");
+    historyList.innerHTML = "";
+
+    historyLog.forEach(function (entry) {
+        var listItem = document.createElement("li");
+        var displayText;
+        if (entry.expression !== undefined && entry.result !== undefined) {
+            displayText = entry.expression + " = " + entry.result;
+        } else if (entry.type !== undefined && entry.matrixA !== undefined && entry.matrixB !== undefined && entry.result !== undefined) {
+            displayText = entry.type + " of " + JSON.stringify(entry.matrixA) + " and " + JSON.stringify(entry.matrixB) + " = " + JSON.stringify(entry.result);
+        } else if (entry.inputValue !== undefined && entry.inputUnit !== undefined && entry.outputUnit !== undefined && entry.result !== undefined) {
+            displayText = entry.inputValue + " " + entry.inputUnit + " = " + entry.result + " " + entry.outputUnit;
+        } else if (entry.a !== undefined && entry.b !== undefined && entry.c !== undefined && entry.solution !== undefined) {
+            displayText = entry.isQuadratic ? entry.a + "x^2 + " + entry.b + "x + " + entry.c + " = " + entry.solution : entry.a + "x + " + entry.b + " = " + entry.solution;
+        } else {
+            displayText = "Unknown entry format";
+        }
+        listItem.textContent = displayText;
+        historyList.appendChild(listItem);
+    });
+
+    var complexList = document.getElementById("complexList");
+    complexList.innerHTML = "";
+
+    Complex.forEach(function (entry) {
+        var listItem = document.createElement("li");
+        var displayText = "Complex operation: " + entry.resultReal + " + " + entry.resultImaginary + "i";
+        listItem.textContent = displayText;
+        complexList.appendChild(listItem);
+    });
 }
