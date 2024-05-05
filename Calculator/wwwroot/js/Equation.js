@@ -43,7 +43,7 @@ function solveEquation() {
 
         var solution = result[result.length - 1];
 
-
+        addToEquationLog(a, b, c, isQuadratic, solution);
     } catch (error) {
         document.getElementById('result').innerText = 'Error: ' + error.message;
     }

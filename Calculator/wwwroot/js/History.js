@@ -30,6 +30,20 @@ function addToHistoryConversion(inputValue, inputFormat, decimalValue, binaryRes
     historyLog.push(logEntry);
 }
 
+function addToEquationLog(a, b, c, isQuadratic, solution) {
+    var logEntry = {
+        a: a,
+        b: b,
+        c: c,
+        isQuadratic: isQuadratic,
+        solution: solution
+    };
+    historyLog.push(logEntry);
+}
+
+
+
+
 function displayHistory() {
     var historyList = document.getElementById("historyList");
     historyList.innerHTML = ""; 
