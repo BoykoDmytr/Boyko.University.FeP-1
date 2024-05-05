@@ -12,6 +12,8 @@ function convertUnits() {
     var result = performConversion(inputValue, inputUnit, outputUnit);
 
     document.getElementById('conversionResult').innerHTML = "Result: " + result + " " + outputUnit;
+
+    addToConversionLog(inputValue, inputUnit, outputUnit, result);
 }
 
 function updateOutputUnits() {

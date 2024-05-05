@@ -41,7 +41,15 @@ function addToEquationLog(a, b, c, isQuadratic, solution) {
     historyLog.push(logEntry);
 }
 
-
+function addToConversionLog(inputValue, inputUnit, outputUnit, result) {
+    var logEntry = {
+        inputValue: inputValue,
+        inputUnit: inputUnit,
+        outputUnit: outputUnit,
+        result: result
+    };
+    historyLog.push(logEntry);
+}
 
 
 function displayHistory() {
