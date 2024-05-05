@@ -299,6 +299,26 @@ Notes:
   - Double-check the correctness of the custom function name and expression before saving.
   - Custom functions can be used in conjunction with standard calculator operations.
 
+
+## Week 10
+- History Log
+
+Basic Operations:
+
+Record the history of requests and responses.
+
+Interface:
+
+There are two buttons that allow you to clear the history and download the history in JSON format.
+
+Usage:
+
+After doing some calculations on this site, just go to the History tab and see what's there, there is an option to download and delete the history.
+
+Notes:
+
+Some output formats may be hard to read but correct
+
 # Project Task Decomposition
 - Develop user interface components for graph plotting
 - Develop core structure and architecture of the calculator application
@@ -309,6 +329,7 @@ Notes:
 - Develop algorithms for calculating mean, median, mode, standard deviation, and variance
 - Develop arithmetic operations for complex numbers
 - Develop functionality for users to define and save custom functions or constants
+- Develop functionality to maintain a log of previous calculations
 
 
 ## Week 1
@@ -373,5 +394,12 @@ Notes:
   - Design user interface for managing custom functions and constants ✔
   - Integrate custom functions feature with other calculator functionalities 🕒
   - Test custom functions with different user-defined functions and constants ✔
+
+## Week 10
+- Implement feature: History Log ✔
+  - Develop functionality to maintain a log of previous calculations ✔
+  - Design user interface for displaying and retrieving past results from the history log ✔
+  - Implement features for clearing or exporting the history log ✔
+  - Test history log functionality for accuracy and performance ✔
 
 
