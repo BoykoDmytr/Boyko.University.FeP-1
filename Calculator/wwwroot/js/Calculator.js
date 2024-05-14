@@ -4,15 +4,13 @@ function calculate() {
 
     try {
         var result = math.evaluate(expression);
+
+        var displayPrecision = document.getElementById('displayPrecision').value;
+        result = parseFloat(result).toFixed(displayPrecision);
         document.getElementById('calculatorResult').textContent = "Result: " + result;
         addToHistory(expression, result);
     } catch (error) {
         alert("Error evaluating the expression.");
-    }
-
-    if (isNaN(num1)) {
-        alert("Please enter a valid number for Number 1.");
-        return;
     }
 
     var result;
@@ -56,7 +54,6 @@ function calculate() {
             result = Math.log10(num1);
             break;
         default:
-            alert("Invalid operation selected.");
             return;
     }
 

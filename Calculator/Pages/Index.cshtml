@@ -20,6 +20,7 @@
     <button onclick="toggleTab('complexCalculator')">Сomplex Calculator</button>
     <button onclick="toggleTab('customFunctions')">Сustom Functions</button>
     <button onclick="toggleTab('historyTab')">History</button>
+    <button onclick="toggleTab('settings')">Settings</button>
 </div>
 
 
@@ -298,12 +299,22 @@
         <button onclick="exportHistory()">Export History</button>
     </div>
 
+    <div id="settings" style="display: none;">
+        <h3>Settings</h3>
+        <script src="Settings.js"></script>
+        <div id="precisionControl">
+            <label for="displayPrecision">Calculator Precision:</label>
+            <input type="number" id="displayPrecision" min="0" max="15" step="1" value="0">
+            <button onclick="setDisplayPrecision()">Set Precision</button>
+        </div>
+    </div>
 
 
 </div>
 
 @section Scripts {
     <script src="~/js/OutputTabs.js"></script>
+    <script src="~/js/Settings.js"></script>
     <script src="~/js/History.js"></script>
     <script src="~/js/CustomFunc.js"></script>
     <script src="~/js/Complex.js"></script>

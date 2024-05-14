@@ -10,7 +10,7 @@ function clearExpression() {
 
 function toggleTab(tabName) {
     var tabs = ['graph', 'calculator', 'equationSolver', 'unitConverter', 'matrixCalculator',
-        'programmingMode', 'statisticalFunctions', 'complexCalculator', 'customFunctions', 'historyTab'];
+        'programmingMode', 'statisticalFunctions', 'complexCalculator', 'customFunctions', 'historyTab', 'settings'];
 
     for (var i = 0; i < tabs.length; i++) {
         var tab = document.getElementById(tabs[i]);
