@@ -319,6 +319,26 @@ Notes:
 
 Some output formats may be hard to read but correct
 
+## Week 11
+- Precision Control
+
+Basic Operations:
+
+Changing the accuracy of the results.
+
+Interface:
+
+A separate "Settings" tab has been created, in which there is a field for entering numbers that mean the number of decimal places.
+
+Usage:
+
+Enter the number of decimal places you want to see in your answer.
+
+Notes:
+
+Made only for the calculator tab, as it is no longer necessary
+
+
 # Project Task Decomposition
 - Develop user interface components for graph plotting
 - Develop core structure and architecture of the calculator application
@@ -330,6 +350,7 @@ Some output formats may be hard to read but correct
 - Develop arithmetic operations for complex numbers
 - Develop functionality for users to define and save custom functions or constants
 - Develop functionality to maintain a log of previous calculations
+- Develop functionality to adjust precision level for calculations
 
 
 ## Week 1
@@ -401,5 +422,13 @@ Some output formats may be hard to read but correct
   - Design user interface for displaying and retrieving past results from the history log ✔
   - Implement features for clearing or exporting the history log ✔
   - Test history log functionality for accuracy and performance ✔
+ 
+## Week 11
+- Implement feature: Precision Control ✔
+  - Develop functionality to adjust precision level for calculations ✔
+  - Design user interface for controlling precision settings ✔
+  - Integrate precision control feature with core calculator functionalities ✔
+  - Test precision control feature with different precision levels ✔
+
 
 
