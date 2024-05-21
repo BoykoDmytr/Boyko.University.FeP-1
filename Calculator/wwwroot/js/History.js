@@ -1,7 +1,6 @@
 ﻿var historyLog = [];
 var Complex = [];
 
-// Змінні для зберігання резервної копії
 var backup = null;
 
 function backupData() {
