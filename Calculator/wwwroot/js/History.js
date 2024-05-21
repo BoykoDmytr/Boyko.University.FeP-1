@@ -1,6 +1,28 @@
 ﻿var historyLog = [];
 var Complex = [];
 
+// Змінні для зберігання резервної копії
+var backup = null;
+
+function backupData() {
+    backup = {
+        historyLog: historyLog,
+        Complex: Complex
+    };
+    alert("Data backup created successfully!");
+}
+
+function loadBackup() {
+    if (backup) {
+        historyLog = backup.historyLog;
+        Complex = backup.Complex;
+        displayHistoryOnPage();
+        alert("Backup data loaded successfully!");
+    } else {
+        alert("No backup data available!");
+    }
+}
+
 function addToHistory(expression, result) {
     var logEntry = {
         expression: expression,
@@ -82,6 +104,7 @@ function addToComplexSubstractLog(realPart1, imaginaryPart1, realPart2, imaginar
     Complex.push(logEntry);
     displayHistoryOnPage();
 }
+
 function addToComplexMultiplyLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2, resultReal, resultImaginary) {
     var logEntry = {
         inputRealValue1: realPart1,
@@ -94,6 +117,7 @@ function addToComplexMultiplyLog(realPart1, imaginaryPart1, realPart2, imaginary
     Complex.push(logEntry);
     displayHistoryOnPage();
 }
+
 function addToComplexDivideLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2, resultReal, resultImaginary) {
     var logEntry = {
         inputRealValue1: realPart1,
@@ -107,10 +131,9 @@ function addToComplexDivideLog(realPart1, imaginaryPart1, realPart2, imaginaryPa
     displayHistoryOnPage();
 }
 
-
 function displayHistory() {
     var historyList = document.getElementById("historyList");
-    historyList.innerHTML = ""; 
+    historyList.innerHTML = "";
 
     historyLog.forEach(function (entry) {
         var listItem = document.createElement("li");
@@ -119,12 +142,11 @@ function displayHistory() {
     });
 }
 
-
 function clearHistory() {
     historyLog = [];
-    displayHistory(); 
+    Complex = [];
+    displayHistory();
 }
-
 
 function exportHistory() {
     var allHistory = {
@@ -150,9 +172,33 @@ function exportHistory() {
     URL.revokeObjectURL(url);
 }
 
+function importHistory(event) {
+    var file = event.target.files[0];
+    if (!file) {
+        return;
+    }
+
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        try {
+            var data = JSON.parse(e.target.result);
+            if (data.historyLog && Array.isArray(data.historyLog)) {
+                historyLog = data.historyLog;
+            }
+            if (data.Complex && Array.isArray(data.Complex)) {
+                Complex = data.Complex;
+            }
+            displayHistoryOnPage();
+        } catch (err) {
+            alert("Error reading file: " + err.message);
+        }
+    };
+    reader.readAsText(file);
+}
+
 function displayHistoryOnPage() {
     var historyList = document.getElementById("historyList");
-    historyList.innerHTML = ""; 
+    historyList.innerHTML = "";
 
     historyLog.forEach(function (entry) {
         var listItem = document.createElement("li");
@@ -165,8 +211,6 @@ function displayHistoryOnPage() {
             displayText = entry.inputValue + " " + entry.inputUnit + " = " + entry.result + " " + entry.outputUnit;
         } else if (entry.a !== undefined && entry.b !== undefined && entry.c !== undefined && entry.solution !== undefined) {
             displayText = entry.isQuadratic ? entry.a + "x^2 + " + entry.b + "x + " + entry.c + " = " + entry.solution : entry.a + "x + " + entry.b + " = " + entry.solution;
-        } else if (entry.expression + " = " + entry.result) {
-            displayText = entry.expression + " = " + entry.result;
         } else {
             displayText = "Unknown entry format";
         }
@@ -175,7 +219,7 @@ function displayHistoryOnPage() {
     });
 
     var complexList = document.getElementById("complexList");
-    complexList.innerHTML = ""; 
+    complexList.innerHTML = "";
 
     Complex.forEach(function (entry) {
         var listItem = document.createElement("li");

@@ -297,7 +297,11 @@
         <ul id="complexList"></ul>
         <button onclick="clearHistory()">Clear History</button>
         <button onclick="exportHistory()">Export History</button>
+        <input type="file" id="importFile" accept=".json" onchange="importHistory(event)" />
+        <button onclick="backupData()">Backup Data</button>
+        <button onclick="loadBackup()">Load Backup</button>
     </div>
+
 
     <div id="settings" style="display: none;">
         <h3>Settings</h3>
