@@ -338,6 +338,44 @@ Notes:
 
 Made only for the calculator tab, as it is no longer necessary
 
+## Week 12
+- Export/Import Data
+
+Basic Operations:
+
+- **Export History:** Save the entire history of calculations and complex operations into a JSON file for future use or backup.
+- **Import History:** Load the history of calculations and complex operations from a JSON file to restore the application state.
+- **Backup Data:** Create a backup of the data directly within the application for quick recovery.
+- **Load Backup:** Load the backup data from within the application.
+
+Interface:
+
+- Added two buttons for creating a backup and for this backup to be backed up and a field for importing data
+
+Usage:
+
+**Exporting History:**
+- Click the `Export History` button to save the entire history of calculations and complex operations into the file `combined_history_log.json`.
+- The file will be automatically downloaded to your device.
+
+**Importing History:**
+- Click the `Import History` button and select the JSON file with the previously saved history of calculations and complex operations.
+- The data from the file will be loaded and displayed on the page.
+
+**Backing Up Data:**
+- Click the `Backup Data` button to create a backup of the current history of calculations and complex operations.
+- The backup will be saved in the variable `backup`.
+
+**Loading Backup:**
+- Click the `Load Backup` button to restore data from the backup.
+- The data from the backup will be loaded and displayed on the page.
+
+Notes:
+
+- **Export/Import Format:** Data is exported and imported in JSON format, which allows for easy file exchange between different devices and applications.
+- **Backup Limitation:** The backup is stored only on the current page within the variable `backup`. For long-term storage, use the export function.
+- **Error Handling:** When importing data from a file, the JSON format must be correct. In case of an error, the user will receive a message describing the error.
+
 
 # Project Task Decomposition
 - Develop user interface components for graph plotting
