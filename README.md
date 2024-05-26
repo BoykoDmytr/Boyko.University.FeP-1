@@ -481,5 +481,5 @@ Notes:
   - [Link to Yurii Broslavskyi project on github](https://github.com/YuriiBroslavskyi/Broslavskyi.University.Online-Gaming-Tournament-Platform)
   - [Link to Yurii Broslavskyi Pull Request](https://github.com/YuriiBroslavskyi/Boyko.University.FeP-1/pull/1)
   - Ryzhanovskyi Mykhailo
-  - [Link to Yurii Broslavskyi project on github](https://github.com/muchailouzivert/Ryzhanovskyi.University.Tinder)
-  - [Link to Yurii Broslavskyi Pull Request](https://github.com/muchailouzivert/Boyko.University.FeP-1/pull/1)
+  - [Link to Ryzhanovskyi Mykhailo project on github](https://github.com/muchailouzivert/Ryzhanovskyi.University.Tinder)
+  - [Link to Ryzhanovskyi Mykhailo Pull Request](https://github.com/muchailouzivert/Boyko.University.FeP-1/pull/1)
