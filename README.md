@@ -475,3 +475,8 @@ Notes:
   - Design user interface for exporting and importing data ✔
   - Implement features for sharing or backing up data ✔
   - Test data export/import functionalities for usability and reliability ✔
+  
+## ANTILAB #2
+  - Broslavskyi Yurii
+  - [Link to Yurii Broslavskyi project on github](https://github.com/YuriiBroslavskyi/Broslavskyi.University.Online-Gaming-Tournament-Platform)
+  - [Link to Yurii Broslavskyi Pull Request](https://github.com/YuriiBroslavskyi/Boyko.University.FeP-1/pull/1)
