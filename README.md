@@ -475,9 +475,3 @@ Notes:
   - Design user interface for exporting and importing data ✔
   - Implement features for sharing or backing up data ✔
   - Test data export/import functionalities for usability and reliability ✔
-
-
-## Antilab #2
-  - Boyko Dmytro
-  - [Link to Boyko Dmytro project](https://github.com/BoykoDmytr/Boyko.University.FeP-1)
-  - [Link to Boyko Dmtro Pull Request](https://github.com/BoykoDmytr/Broslavskyi.University.Online-Gaming-Tournament-Platform/pull/1/files)
