@@ -1,4 +1,4 @@
-﻿//Функції для побудови графіків
+﻿
 
 function addToExpression(value) {
     var expressionField = document.getElementById('mathExpression');

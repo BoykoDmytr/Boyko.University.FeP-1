@@ -1,12 +1,9 @@
 ﻿var historyLog = [];
-var Complex = [];
-
 var backup = null;
 
 function backupData() {
     backup = {
-        historyLog: historyLog,
-        Complex: Complex
+        historyLog: historyLog
     };
     alert("Data backup created successfully!");
 }
@@ -14,7 +11,6 @@ function backupData() {
 function loadBackup() {
     if (backup) {
         historyLog = backup.historyLog;
-        Complex = backup.Complex;
         displayHistoryOnPage();
         alert("Backup data loaded successfully!");
     } else {
@@ -80,6 +76,7 @@ function addToConversionLog(inputValue, inputUnit, outputUnit, result) {
 
 function addToComplexADDLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2, resultReal, resultImaginary) {
     var logEntry = {
+        type: "Complex Addition",
         inputRealValue1: realPart1,
         inputimaginaryValue1: imaginaryPart1,
         inputRealValue2: realPart2,
@@ -87,12 +84,13 @@ function addToComplexADDLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2
         resultReal: resultReal,
         resultImaginary: resultImaginary
     };
-    Complex.push(logEntry);
+    historyLog.push(logEntry);
     displayHistoryOnPage();
 }
 
 function addToComplexSubstractLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2, resultReal, resultImaginary) {
     var logEntry = {
+        type: "Complex Subtraction",
         inputRealValue1: realPart1,
         inputimaginaryValue1: imaginaryPart1,
         inputRealValue2: realPart2,
@@ -100,12 +98,13 @@ function addToComplexSubstractLog(realPart1, imaginaryPart1, realPart2, imaginar
         resultReal: resultReal,
         resultImaginary: resultImaginary
     };
-    Complex.push(logEntry);
+    historyLog.push(logEntry);
     displayHistoryOnPage();
 }
 
 function addToComplexMultiplyLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2, resultReal, resultImaginary) {
     var logEntry = {
+        type: "Complex Multiplication",
         inputRealValue1: realPart1,
         inputimaginaryValue1: imaginaryPart1,
         inputRealValue2: realPart2,
@@ -113,12 +112,13 @@ function addToComplexMultiplyLog(realPart1, imaginaryPart1, realPart2, imaginary
         resultReal: resultReal,
         resultImaginary: resultImaginary
     };
-    Complex.push(logEntry);
+    historyLog.push(logEntry);
     displayHistoryOnPage();
 }
 
 function addToComplexDivideLog(realPart1, imaginaryPart1, realPart2, imaginaryPart2, resultReal, resultImaginary) {
     var logEntry = {
+        type: "Complex Division",
         inputRealValue1: realPart1,
         inputimaginaryValue1: imaginaryPart1,
         inputRealValue2: realPart2,
@@ -126,35 +126,23 @@ function addToComplexDivideLog(realPart1, imaginaryPart1, realPart2, imaginaryPa
         resultReal: resultReal,
         resultImaginary: resultImaginary
     };
-    Complex.push(logEntry);
+    historyLog.push(logEntry);
     displayHistoryOnPage();
 }
 
 function displayHistory() {
     var historyList = document.getElementById("historyList");
     historyList.innerHTML = "";
-
-    historyLog.forEach(function (entry) {
-        var listItem = document.createElement("li");
-        listItem.textContent = entry.expression + " = " + entry.result;
-        historyList.appendChild(listItem);
-    });
 }
 
 function clearHistory() {
     historyLog = [];
-    Complex = [];
     displayHistory();
 }
 
 function exportHistory() {
-    var allHistory = {
-        historyLog: historyLog,
-        Complex: Complex
-    };
-
-    var jsonData = JSON.stringify(allHistory);
-    var filename = "combined_history_log.json";
+    var jsonData = JSON.stringify({ historyLog: historyLog });
+    var filename = "history_log.json";
 
     var blob = new Blob([jsonData], { type: "application/json" });
 
@@ -184,9 +172,6 @@ function importHistory(event) {
             if (data.historyLog && Array.isArray(data.historyLog)) {
                 historyLog = data.historyLog;
             }
-            if (data.Complex && Array.isArray(data.Complex)) {
-                Complex = data.Complex;
-            }
             displayHistoryOnPage();
         } catch (err) {
             alert("Error reading file: " + err.message);
@@ -210,20 +195,13 @@ function displayHistoryOnPage() {
             displayText = entry.inputValue + " " + entry.inputUnit + " = " + entry.result + " " + entry.outputUnit;
         } else if (entry.a !== undefined && entry.b !== undefined && entry.c !== undefined && entry.solution !== undefined) {
             displayText = entry.isQuadratic ? entry.a + "x^2 + " + entry.b + "x + " + entry.c + " = " + entry.solution : entry.a + "x + " + entry.b + " = " + entry.solution;
-        } else {
-            displayText = "Unknown entry format";
-        }
-        listItem.textContent = displayText;
-        historyList.appendChild(listItem);
-    });
-
-    var complexList = document.getElementById("complexList");
-    complexList.innerHTML = "";
-
-    Complex.forEach(function (entry) {
-        var listItem = document.createElement("li");
-        var displayText = "Complex operation: " + entry.resultReal + " + " + entry.resultImaginary + "i";
-        listItem.textContent = displayText;
-        complexList.appendChild(listItem);
-    });
+        } else if (entry.type !== undefined && entry.inputRealValue1 !== undefined && entry.inputimaginaryValue1 !== undefined && entry.inputRealValue2 !== undefined && entry.inputimaginaryValue2 !== undefined) {
+        displayText = entry.type + " of (" + entry.inputRealValue1 + " + " + entry.inputimaginaryValue1 + "i) and (" + entry.inputRealValue2 + " + " + entry.inputimaginaryValue2 + "i) = (" + entry.resultReal + " + " + entry.resultImaginary + "i)";
+    } else {
+        displayText = "Unknown entry format";
+    }
+    listItem.textContent = displayText;
+    historyList.appendChild(listItem);
+});
 }
+
