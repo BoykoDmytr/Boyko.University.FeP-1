@@ -196,7 +196,9 @@ function displayHistoryOnPage() {
         } else if (entry.a !== undefined && entry.b !== undefined && entry.c !== undefined && entry.solution !== undefined) {
             displayText = entry.isQuadratic ? entry.a + "x^2 + " + entry.b + "x + " + entry.c + " = " + entry.solution : entry.a + "x + " + entry.b + " = " + entry.solution;
         } else if (entry.type !== undefined && entry.inputRealValue1 !== undefined && entry.inputimaginaryValue1 !== undefined && entry.inputRealValue2 !== undefined && entry.inputimaginaryValue2 !== undefined) {
-        displayText = entry.type + " of (" + entry.inputRealValue1 + " + " + entry.inputimaginaryValue1 + "i) and (" + entry.inputRealValue2 + " + " + entry.inputimaginaryValue2 + "i) = (" + entry.resultReal + " + " + entry.resultImaginary + "i)";
+            displayText = entry.type + " of (" + entry.inputRealValue1 + " + " + entry.inputimaginaryValue1 + "i) and (" + entry.inputRealValue2 + " + " + entry.inputimaginaryValue2 + "i) = (" + entry.resultReal + " + " + entry.resultImaginary + "i)";
+        } else if (entry.inputValue !== undefined && entry.inputFormat !== undefined && entry.decimalValue !== undefined && entry.binaryResult !== undefined && entry.octalResult !== undefined && entry.hexadecimalResult !== undefined) {
+            displayText = entry.inputValue + " (" + entry.inputFormat + ") = Decimal: " + entry.decimalValue + ", Binary: " + entry.binaryResult + ", Octal: " + entry.octalResult + ", Hexadecimal: " + entry.hexadecimalResult;
     } else {
         displayText = "Unknown entry format";
     }
