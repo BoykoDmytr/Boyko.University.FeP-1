@@ -35,7 +35,7 @@
     <div id="calculator" style="display: none;">
         <label for="expression">Enter Expression:</label>
         <output id="calculatorResult"></output>
-        <input type="text" id="expression" />
+        <input type="text" id="expression" step="1" value="" />
 
         <div class="keypad">
             <button onclick="appendToExpression('1')">1</button>
@@ -56,6 +56,7 @@
             <button onclick="appendToExpression('(')">(</button>
             <button onclick="appendToExpression(')')">)</button>
             <button onclick="calculate()">=</button>
+            <button onclick="clearCalculator()">C</button>
         </div>
 
         <div class="keypad">
@@ -308,7 +309,7 @@
         <script src="Settings.js"></script>
         <div id="precisionControl">
             <label for="displayPrecision">Calculator Precision:</label>
-            <input type="number" id="displayPrecision" min="0" max="15" step="1" value="0">
+            <input type="number" id="displayPrecision" min="0" max="15" step="1" value="2">
             <button onclick="setDisplayPrecision()">Set Precision</button>
         </div>
     </div>

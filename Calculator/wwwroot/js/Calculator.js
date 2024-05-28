@@ -1,4 +1,7 @@
-//Функція для звичайного калькулятора
+function clearCalculator() {
+    document.getElementById('expression').value = '';
+    document.getElementById('calculatorResult').textContent = '';
+}
 function calculate() {
     var expression = document.getElementById('expression').value;
 

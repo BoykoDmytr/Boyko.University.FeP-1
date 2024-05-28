@@ -3,11 +3,6 @@ function appendToExpression(value) {
     expressionField.value += value;
 }
 
-function clearExpression() {
-    var expressionField = document.getElementById('expression');
-    expressionField.value = '';
-}
-
 function toggleTab(tabName) {
     var tabs = ['graph', 'calculator', 'equationSolver', 'unitConverter', 'matrixCalculator',
         'programmingMode', 'statisticalFunctions', 'complexCalculator', 'customFunctions', 'historyTab', 'settings'];
