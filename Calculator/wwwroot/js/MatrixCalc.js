@@ -184,9 +184,16 @@ function performMatrixOperation() {
 
 function parseMatrix(matrixString) {
     let rows = matrixString.trim().split('\n');
-    let matrix = rows.map(row => row.trim().split(/\s+/).map(parseFloat));
+    let matrix = rows.map(row => {
+        let values = row.trim().split(/\s+/).map(parseFloat);
+        if (values.some(isNaN)) {
+            throw new Error("Incorrect matrix");
+        }
+        return values;
+    });
     return matrix;
 }
+
 
 function displayMatrixResult(result) {
     let resultDiv = document.getElementById('matrixResult');
