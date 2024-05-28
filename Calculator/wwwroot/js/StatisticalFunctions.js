@@ -1,5 +1,6 @@
 function parseDataset(datasetString) {
-    return datasetString.split(',').map(Number);
+    const separators = /[,;\s-]+/;
+    return datasetString.split(separators).map(Number);
 }
 
 function calculateMean() {
