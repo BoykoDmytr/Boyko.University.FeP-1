@@ -7,6 +7,18 @@
 <h2>@ViewData["Title"]</h2>
 
 <link rel="stylesheet" href="~/css/styles.css">
+@if (User.Identity.IsAuthenticated)
+{
+    <p>Hi, @User.Identity.Name!</p>
+    <form method="post" asp-page="/Shared/Logout">
+        <button type="submit">Вийти</button>
+    </form>
+}
+else
+{
+    <a href="/Shared/Login">Увійти за допомогою Google</a>
+}
+
 
 <div id="header">
     <h3>Select an Option:</h3>

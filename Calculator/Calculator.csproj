@@ -18,4 +18,8 @@
     <None Include="wwwroot\js\Settings.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="7.0.3" />
+  </ItemGroup>
+
 </Project>
